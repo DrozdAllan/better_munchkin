@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttericon/rpg_awesome_icons.dart';
 
-import '../../provider/is_epic_provider.dart';
-import '../../provider/player_provider.dart';
+import 'package:better_munchkin/provider/is_epic_provider.dart';
+import 'package:better_munchkin/provider/player_provider.dart';
 
 class PlayerCard extends ConsumerStatefulWidget {
   const PlayerCard({Key? key, required this.player}) : super(key: key);
@@ -27,7 +28,7 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
         color: Color(widget.player.colorId),
       ),
       margin: const EdgeInsets.only(top: 6.0),
-      height: 180.0,
+      height: 190.0,
       child: Column(
         children: [
           Text(
@@ -45,8 +46,7 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                 height: 140.0,
                 width: 100.0,
                 child: Row(children: [
-                  Icon(
-                    Icons.airplanemode_on,
+                 Icon(RpgAwesome.corked_tube,
                     color: Theme.of(context).cardColor,
                   ),
                   SizedBox(
@@ -78,7 +78,8 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                 height: 140.0,
                 width: 100.0,
                 child: Row(children: [
-                  Icon(Icons.push_pin, color: Theme.of(context).cardColor),
+                  Icon(RpgAwesome.large_hammer,
+                      color: Theme.of(context).cardColor),
                   SizedBox(
                     height: 140.0,
                     width: 75.0,
@@ -109,7 +110,7 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                 height: 140.0,
                 width: 100.0,
                 child: Row(children: [
-                  Icon(Icons.equalizer, color: Theme.of(context).cardColor),
+                  Icon(RpgAwesome.targeted, color: Theme.of(context).cardColor),
                   SizedBox(
                     height: 140.0,
                     width: 75.0,

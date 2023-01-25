@@ -30,7 +30,7 @@ class _AddPlayerDialogState extends ConsumerState<AddPlayerDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        height: 325.0,
+        height: 355.0,
         padding: const EdgeInsets.all(8.0),
         child: Form(
           key: _formKey,

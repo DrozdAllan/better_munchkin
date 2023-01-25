@@ -5,6 +5,7 @@ import 'package:better_munchkin/views/strategic/strategic.dart';
 import 'package:better_munchkin/provider/is_epic_provider.dart';
 import 'add_player_dialog.dart';
 import 'remove_player_dialog.dart';
+import 'package:fluttericon/rpg_awesome_icons.dart';
 
 class Home extends ConsumerWidget {
   const Home({Key? key}) : super(key: key);
@@ -18,16 +19,23 @@ class Home extends ConsumerWidget {
         leading: IconButton(
           splashRadius: 20.0,
           icon: ref.watch(isEpicProvider)
-              ? const Icon(Icons.accessible_forward)
-              : const Icon(Icons.accessibility),
+              ? const Icon(RpgAwesome.wyvern)
+              : const Icon(RpgAwesome.gecko),
           onPressed: () {
+			ScaffoldMessenger.of(context).clearSnackBars();
             ref.read(isEpicProvider.notifier).update((state) => !state);
+            String mode = ref.watch(isEpicProvider) ? 'epic : maximum level is 20' : 'normal : maximum level is 10';
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Gamemode set to $mode'),
+              ),
+            );
           },
         ),
         actions: [
           IconButton(
             splashRadius: 20.0,
-            icon: const Icon(Icons.query_stats),
+            icon: const Icon(RpgAwesome.circle_of_circles),
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -39,7 +47,7 @@ class Home extends ConsumerWidget {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
+        // color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
