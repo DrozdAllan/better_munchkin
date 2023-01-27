@@ -34,9 +34,10 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
           Text(
             widget.player.name.toString().toUpperCase(),
             style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 28.0,
-                color: Colors.white),
+              fontWeight: FontWeight.bold,
+              fontSize: 28.0,
+              // color: Colors.white
+            ),
           ),
           Row(
             mainAxisSize: MainAxisSize.max,
@@ -48,7 +49,7 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                 child: Row(children: [
                   const Icon(
                     RpgAwesome.corked_tube,
-                    color: Colors.white,
+                    // color: Colors.white,
                   ),
                   SizedBox(
                     height: 140.0,
@@ -68,7 +69,9 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                           return Text(
                             value.toString(),
                             style: const TextStyle(
-                                fontSize: 38.0, color: Colors.white),
+                              fontSize: 38.0,
+                              // color: Colors.white
+                            ),
                           );
                         })),
                   ),
@@ -78,7 +81,9 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                 height: 140.0,
                 width: 100.0,
                 child: Row(children: [
-                  const Icon(RpgAwesome.large_hammer, color: Colors.white),
+                  const Icon(RpgAwesome.large_hammer, 
+				//   color: Colors.white
+				  ),
                   SizedBox(
                     height: 140.0,
                     width: 75.0,
@@ -97,7 +102,9 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                               child: Text(
                                 i.toString(),
                                 style: const TextStyle(
-                                    fontSize: 38.0, color: Colors.white),
+                                    fontSize: 38.0, 
+									// color: Colors.white
+									),
                               ),
                             ),
                         ]),
@@ -108,7 +115,9 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                 height: 140.0,
                 width: 100.0,
                 child: Row(children: [
-                  const Icon(RpgAwesome.targeted, color: Colors.white),
+                  const Icon(RpgAwesome.targeted, 
+				//   color: Colors.white
+				  ),
                   SizedBox(
                     height: 140.0,
                     width: 75.0,
@@ -116,7 +125,9 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                       child: Text(
                         widget.player.power.toString(),
                         style: const TextStyle(
-                            fontSize: 54.0, color: Colors.white),
+                            fontSize: 54.0, 
+							// color: Colors.white
+							),
                       ),
                     ),
                   ),

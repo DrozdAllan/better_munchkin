@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Munchkin En Mieux',
       theme: FlexThemeData.light(
-        scheme: FlexScheme.blueWhale,
+        scheme: FlexScheme.verdunHemlock,
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
         blendLevel: 30,
         subThemesData: const FlexSubThemesData(

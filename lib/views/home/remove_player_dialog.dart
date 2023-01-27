@@ -27,7 +27,7 @@ class RemovePlayerDialog extends ConsumerWidget {
                 mainAxisSpacing: 25.0,
                 children: [
                   for (Player player in provider)
-                    ElevatedButton(
+                    TextButton(
                       style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(player.colorId))),
                       onPressed: () {
                         notifier.removePlayer(player.name);

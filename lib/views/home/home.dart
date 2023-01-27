@@ -14,7 +14,6 @@ class Home extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MUNCHKIN HELPER'),
         centerTitle: true,
         leading: IconButton(
           splashRadius: 20.0,

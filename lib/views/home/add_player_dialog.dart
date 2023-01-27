@@ -52,8 +52,9 @@ class _AddPlayerDialogState extends ConsumerState<AddPlayerDialog> {
                     // TODO: choose Colors
                     availableColors: const [
                       Color(0xFF8EDBCE),
-                      Color(0xFFFFAD91),
-                      Color(0xFF89ADBF)
+                      Color(0xFFFFC4C6),
+                      Color(0xFFFFDE9C),
+                      Color(0xFFC5E7FF)
                     ], pickerColor: _color, onColorChanged: changeColor),
               ),
               ElevatedButton(
