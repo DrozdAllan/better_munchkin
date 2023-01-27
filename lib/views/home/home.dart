@@ -14,7 +14,7 @@ class Home extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Munchkin En Mieux'),
+        title: const Text('MUNCHKIN HELPER'),
         centerTitle: true,
         leading: IconButton(
           splashRadius: 20.0,
@@ -22,9 +22,11 @@ class Home extends ConsumerWidget {
               ? const Icon(RpgAwesome.wyvern)
               : const Icon(RpgAwesome.gecko),
           onPressed: () {
-			ScaffoldMessenger.of(context).clearSnackBars();
+            ScaffoldMessenger.of(context).clearSnackBars();
             ref.read(isEpicProvider.notifier).update((state) => !state);
-            String mode = ref.watch(isEpicProvider) ? 'epic : maximum level is 20' : 'normal : maximum level is 10';
+            String mode = ref.watch(isEpicProvider)
+                ? 'epic : maximum level is 20'
+                : 'normal : maximum level is 10';
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text('Gamemode set to $mode'),
@@ -47,7 +49,6 @@ class Home extends ConsumerWidget {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        // color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

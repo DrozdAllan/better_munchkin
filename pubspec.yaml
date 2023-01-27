@@ -43,6 +43,7 @@ dependencies:
   flutter_colorpicker: ^1.0.3
   fluttericon: ^2.0.0
   google_fonts: ^3.0.1
+  flutter_inset_box_shadow: ^1.0.8
 
 dev_dependencies:
   flutter_test:

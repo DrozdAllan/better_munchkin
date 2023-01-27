@@ -51,9 +51,9 @@ class _AddPlayerDialogState extends ConsumerState<AddPlayerDialog> {
                 child: BlockPicker(
                     // TODO: choose Colors
                     availableColors: const [
-                      Color(0xFFFFBA61),
-                      Color(0xFFEC7FFF),
-                      Color(0xFF96D970)
+                      Color(0xFF8EDBCE),
+                      Color(0xFFFFAD91),
+                      Color(0xFF89ADBF)
                     ], pickerColor: _color, onColorChanged: changeColor),
               ),
               ElevatedButton(
