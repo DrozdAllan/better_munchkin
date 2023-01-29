@@ -61,7 +61,11 @@ class _AddPlayerDialogState extends ConsumerState<AddPlayerDialog> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     ref.read(playerProvider.notifier).addPlayer(Player(
-                        name: _name.text, colorId: _color.value, power: 1));
+                        name: _name.text,
+                        colorId: _color.value,
+                        level: 1,
+                        bonus: 0,
+                        power: 1));
                     Navigator.pop(context);
                   }
                 },
