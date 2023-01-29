@@ -15,9 +15,6 @@ class PlayerCard extends ConsumerStatefulWidget {
 }
 
 class _PlayerCardState extends ConsumerState<PlayerCard> {
-  var level = 1;
-  var bonus = 0;
-
   @override
   Widget build(BuildContext context) {
     final notifier = ref.read(playerProvider.notifier);
@@ -36,7 +33,6 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 28.0,
-              // color: Colors.white
             ),
           ),
           Row(
@@ -66,13 +62,13 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                       children: List.generate(
                           ref.watch(isEpicProvider) ? 19 : 9, (index) {
                         return Text(
-                          (index + 1).toString(),
+							(index+1).toString(),
+                        //   widget.player.level.toString(),
                           style: const TextStyle(
                             fontSize: 38.0,
-                            // color: Colors.white
                           ),
                         );
-                      }),
+                      }, growable: false),
                     ),
                   ),
                 ]),
@@ -88,25 +84,23 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                     height: 140.0,
                     width: 75.0,
                     child: ListWheelScrollView(
-                        itemExtent: 52,
-                        diameterRatio: 1.2,
-                        useMagnifier: true,
-                        magnification: 1.4,
-                        onSelectedItemChanged: (index) {
-                          notifier.setBonus(widget.player.name, index);
-                        },
-                        children: [
-                          for (var i = 0; i <= 30; i++)
-                            Center(
-                              child: Text(
-                                i.toString(),
-                                style: const TextStyle(
-                                  fontSize: 38.0,
-                                  // color: Colors.white
-                                ),
-                              ),
-                            ),
-                        ]),
+                      itemExtent: 52,
+                      diameterRatio: 1.2,
+                      useMagnifier: true,
+                      magnification: 1.4,
+                      onSelectedItemChanged: (index) {
+                        notifier.setBonus(widget.player.name, index);
+                      },
+                      children: List.generate(30, (index) {
+                        return Text(
+                        //   widget.player.bonus.toString(),
+						index.toString(),
+                          style: const TextStyle(
+                            fontSize: 38.0,
+                          ),
+                        );
+                      }, growable: false),
+                    ),
                   ),
                 ]),
               ),
@@ -125,7 +119,6 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                         widget.player.power.toString(),
                         style: const TextStyle(
                           fontSize: 54.0,
-                          // color: Colors.white
                         ),
                       ),
                     ),

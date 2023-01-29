@@ -21,6 +21,7 @@ class _StrategicState extends ConsumerState<Strategic> {
 
   @override
   Widget build(BuildContext context) {
+	// TODO: add FAB with battle calculator
     final provider = ref.watch(playerProvider);
     return Scaffold(
       body: GridView.count(
@@ -45,20 +46,15 @@ class _StrategicState extends ConsumerState<Strategic> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      GestureDetector(
-						onTap: () {
-						  // TODO: https://pub.dev/packages/sleek_circular_slider
-						},
-						child: Column(
-						  children: [
-							const Icon(
-							  RpgAwesome.corked_tube,
-							),
-							Text(player.level.toString(),
-								style: const TextStyle(fontSize: 38.0)),
-						  ],
-						),
-					  ),
+                      Column(
+                        children: [
+                          const Icon(
+                            RpgAwesome.corked_tube,
+                          ),
+                          Text(player.level.toString(),
+                              style: const TextStyle(fontSize: 38.0)),
+                        ],
+                      ),
                       Column(
                         children: [
                           const Icon(
