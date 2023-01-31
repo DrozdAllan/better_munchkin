@@ -1,4 +1,5 @@
 import 'package:better_munchkin/provider/player_provider.dart';
+import 'package:better_munchkin/utils/battle_fab.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,19 +22,20 @@ class _StrategicState extends ConsumerState<Strategic> {
 
   @override
   Widget build(BuildContext context) {
-	// TODO: add FAB with battle calculator
     final provider = ref.watch(playerProvider);
     return Scaffold(
       body: GridView.count(
         padding: const EdgeInsets.only(top: 0.0),
-        childAspectRatio: 3,
+        childAspectRatio: 4,
         crossAxisCount: 2,
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
+        crossAxisSpacing: 2.0,
+        mainAxisSpacing: 2.0,
         children: [
           for (Player player in provider)
             Container(
-              color: Color(player.colorId),
+              decoration: BoxDecoration(
+                  color: Color(player.colorId),
+                  borderRadius: BorderRadius.circular(8.0)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -81,6 +83,7 @@ class _StrategicState extends ConsumerState<Strategic> {
             )
         ],
       ),
+      floatingActionButton: const BattleFab(),
     );
   }
 

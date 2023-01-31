@@ -49,7 +49,7 @@ class _AddPlayerDialogState extends ConsumerState<AddPlayerDialog> {
               SizedBox(
                 height: 200.0,
                 child: BlockPicker(
-                    // TODO: choose Colors
+                    // TODO: at least 8 Colors
                     availableColors: const [
                       Color(0xFF8EDBCE),
                       Color(0xFFFFC4C6),

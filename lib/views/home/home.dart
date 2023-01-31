@@ -1,3 +1,4 @@
+import 'package:better_munchkin/utils/battle_fab.dart';
 import 'package:better_munchkin/views/home/player_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -79,6 +80,7 @@ class Home extends ConsumerWidget {
           ],
         ),
       ),
+      floatingActionButton: const BattleFab(),
     );
   }
 }
