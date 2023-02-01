@@ -44,6 +44,7 @@ dependencies:
   fluttericon: ^2.0.0
   google_fonts: ^3.0.1
   sleek_circular_slider: ^2.0.1
+  flutter_bloc: ^8.1.1
 
 dev_dependencies:
   flutter_test:

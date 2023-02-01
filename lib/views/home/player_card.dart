@@ -1,8 +1,9 @@
+import 'package:better_munchkin/logic/cubit/is_epic_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
-import 'package:better_munchkin/provider/is_epic_provider.dart';
 import 'package:better_munchkin/provider/player_provider.dart';
 
 class PlayerCard extends ConsumerStatefulWidget {
@@ -49,26 +50,29 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                   SizedBox(
                     height: 140.0,
                     width: 75.0,
-                    child: ListWheelScrollView(
-                      itemExtent: 52,
-                      diameterRatio: 1.2,
-                      useMagnifier: true,
-                      magnification: 1.4,
-                      onSelectedItemChanged: (index) {
-                        // Note : it starts with index 0 but the minimum level is 1
-                        // so it's always index + 1
-                        notifier.setLevel(widget.player.name, index + 1);
-                      },
-                      children: List.generate(
-                          ref.watch(isEpicProvider) ? 19 : 9, (index) {
-                        return Text(
-							(index+1).toString(),
-                        //   widget.player.level.toString(),
-                          style: const TextStyle(
-                            fontSize: 38.0,
-                          ),
+                    child: BlocBuilder<IsEpicCubit, bool>(
+                      builder: (context, state) {
+                        return ListWheelScrollView(
+                          itemExtent: 52,
+                          diameterRatio: 1.2,
+                          useMagnifier: true,
+                          magnification: 1.4,
+                          onSelectedItemChanged: (index) {
+                            // Note : it starts with index 0 but the minimum level is 1
+                            // so it's always index + 1
+                            notifier.setLevel(widget.player.name, index + 1);
+                          },
+                          children: List.generate(state ? 19 : 9, (index) {
+                            return Text(
+                              (index + 1).toString(),
+                              //   widget.player.level.toString(),
+                              style: const TextStyle(
+                                fontSize: 38.0,
+                              ),
+                            );
+                          }, growable: false),
                         );
-                      }, growable: false),
+                      },
                     ),
                   ),
                 ]),
@@ -93,8 +97,8 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                       },
                       children: List.generate(30, (index) {
                         return Text(
-                        //   widget.player.bonus.toString(),
-						index.toString(),
+                          //   widget.player.bonus.toString(),
+                          index.toString(),
                           style: const TextStyle(
                             fontSize: 38.0,
                           ),
