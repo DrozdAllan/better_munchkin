@@ -1,15 +1,19 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:better_munchkin/views/home/home.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'logic/cubit/is_epic_cubit.dart';
+import 'logic/cubit/player/player_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    const ProviderScope(
-      child: MyApp(),
-    ),
+    MultiBlocProvider(providers: [
+      BlocProvider(create: (context) => IsEpicCubit()),
+      BlocProvider(create: (context) => PlayerCubit()),
+    ], child: const MyApp()),
   );
 }
 

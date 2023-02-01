@@ -1,13 +1,12 @@
 import 'package:better_munchkin/utils/custom_chip.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
-class Battle extends ConsumerWidget {
+class Battle extends StatelessWidget {
   const Battle({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -1,24 +1,22 @@
+import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/is_epic_cubit.dart';
+import 'package:better_munchkin/logic/cubit/player/player_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
-import 'package:better_munchkin/provider/player_provider.dart';
-
-class PlayerCard extends ConsumerStatefulWidget {
-  const PlayerCard({Key? key, required this.player}) : super(key: key);
+class PlayerCard extends StatefulWidget {
+  const PlayerCard({super.key, required this.player});
 
   final Player player;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _PlayerCardState();
+  State<PlayerCard> createState() => _PlayerCardState();
 }
 
-class _PlayerCardState extends ConsumerState<PlayerCard> {
+class _PlayerCardState extends State<PlayerCard> {
   @override
   Widget build(BuildContext context) {
-    final notifier = ref.read(playerProvider.notifier);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
@@ -60,7 +58,9 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                           onSelectedItemChanged: (index) {
                             // Note : it starts with index 0 but the minimum level is 1
                             // so it's always index + 1
-                            notifier.setLevel(widget.player.name, index + 1);
+                            context
+                                .read<PlayerCubit>()
+                                .setLevel(widget.player.name, index + 1);
                           },
                           children: List.generate(state ? 19 : 9, (index) {
                             return Text(
@@ -93,7 +93,9 @@ class _PlayerCardState extends ConsumerState<PlayerCard> {
                       useMagnifier: true,
                       magnification: 1.4,
                       onSelectedItemChanged: (index) {
-                        notifier.setBonus(widget.player.name, index);
+                        context
+                            .read<PlayerCubit>()
+                            .setBonus(widget.player.name, index);
                       },
                       children: List.generate(30, (index) {
                         return Text(
