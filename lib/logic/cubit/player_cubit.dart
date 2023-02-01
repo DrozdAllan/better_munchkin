@@ -1,12 +1,5 @@
 import 'package:better_munchkin/data/models/player.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-part 'player_state.dart';
-
-// class PlayerCubit extends Cubit<PlayerState> {
-//   PlayerCubit() : super(PlayerInitial());
-// }
+import 'package:better_munchkin/utils/commons.dart';
 
 class PlayerCubit extends Cubit<List<Player>> {
   PlayerCubit() : super([]);

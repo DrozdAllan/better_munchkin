@@ -1,8 +1,7 @@
 import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/is_epic_cubit.dart';
-import 'package:better_munchkin/logic/cubit/player/player_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:better_munchkin/logic/cubit/player_cubit.dart';
+import 'package:better_munchkin/utils/commons.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
 class PlayerCard extends StatefulWidget {

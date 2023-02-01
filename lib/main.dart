@@ -1,11 +1,10 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:better_munchkin/utils/commons.dart';
 import 'package:better_munchkin/views/home/home.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'logic/cubit/is_epic_cubit.dart';
-import 'logic/cubit/player/player_cubit.dart';
+import 'logic/cubit/player_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

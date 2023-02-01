@@ -1,14 +1,11 @@
 import 'package:better_munchkin/logic/cubit/is_epic_cubit.dart';
 import 'package:better_munchkin/utils/battle_fab.dart';
 import 'package:better_munchkin/views/home/player_list.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:better_munchkin/utils/commons.dart';
 import 'package:better_munchkin/views/strategic/strategic.dart';
 import 'add_player_dialog.dart';
 import 'remove_player_dialog.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
-
-//TODO: create file with common import
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
