@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
+import 'package:better_munchkin/utils/commons.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
 class CustomChip extends StatelessWidget {
@@ -13,7 +14,9 @@ class CustomChip extends StatelessWidget {
       child: Chip(
         label: Text('$name (${power.toString()})'),
         deleteIcon: const Icon(RpgAwesome.crossed_bones, size: 16.0),
-        onDeleted: () {},
+        onDeleted: () {
+          context.read<BattleCubit>().removePlayer(name);
+        },
       ),
     );
   }

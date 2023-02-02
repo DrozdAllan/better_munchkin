@@ -13,7 +13,7 @@ class AddPlayerDialog extends StatefulWidget {
 class _AddPlayerDialogState extends State<AddPlayerDialog> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _name = TextEditingController();
-  Color _color = const Color.fromARGB(255, 0, 0, 0);
+  Color _color = const Color(0xFF8EDBCE);
 
   @override
   void dispose() {
@@ -65,12 +65,6 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
                         level: 1,
                         bonus: 0,
                         power: 1));
-                    // ref.read(playerProvider.notifier).addPlayer(Player(
-                    //     name: _name.text,
-                    //     colorId: _color.value,
-                    //     level: 1,
-                    //     bonus: 0,
-                    //     power: 1));
                     Navigator.pop(context);
                   }
                 },

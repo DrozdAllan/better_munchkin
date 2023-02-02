@@ -8,7 +8,7 @@ import 'remove_player_dialog.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,32 +56,24 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const AddPlayerDialog(),
-                );
-              },
+              onPressed: () => showDialog(
+                context: context,
+                builder: (context) => const AddPlayerDialog(),
+              ),
               child: const Text('Add Player'),
             ),
             ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const RemovePlayerDialog(),
-                );
-              },
+              onPressed: () => showDialog(
+                context: context,
+                builder: (context) => const RemovePlayerDialog(),
+              ),
               child: const Text('Remove Player'),
             ),
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: const [
-            PlayerList(),
-          ],
-        ),
+      body: const SingleChildScrollView(
+        child: PlayerList(),
       ),
       floatingActionButton: const BattleFab(),
     );

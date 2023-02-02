@@ -1,5 +1,9 @@
+import 'package:better_munchkin/data/models/player.dart';
+import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
+import 'package:better_munchkin/utils/commons.dart';
 import 'package:better_munchkin/utils/custom_chip.dart';
-import 'package:flutter/material.dart';
+import 'package:better_munchkin/views/battle/player_battle_dialog.dart';
+import 'package:better_munchkin/views/battle/player_battle_row.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
 class Battle extends StatelessWidget {
@@ -17,15 +21,18 @@ class Battle extends StatelessWidget {
               Column(
                 children: [
                   const Icon(RpgAwesome.knight_helmet, size: 52.0),
-                  Row(
-                    children: [
-                      const CustomChip(name: 'Suzie', power: 6),
-                      const CustomChip(name: 'Mimi', power: 4),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(RpgAwesome.hospital_cross)),
-                    ],
-                  )
+                  const SizedBox(
+                    height: 350.0,
+                    width: 350.0,
+                    child: PlayerBattleRow(),
+                  ),
+                  IconButton(
+                    onPressed: () => showDialog(
+                      context: context,
+                      builder: (context) => const PlayerBattleDialog(),
+                    ),
+                    icon: const Icon(RpgAwesome.hospital_cross),
+                  ),
                 ],
               )
             ],

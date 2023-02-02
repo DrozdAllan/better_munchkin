@@ -1,3 +1,4 @@
+import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:better_munchkin/views/home/home.dart';
@@ -12,6 +13,7 @@ Future<void> main() async {
     MultiBlocProvider(providers: [
       BlocProvider(create: (context) => IsEpicCubit()),
       BlocProvider(create: (context) => PlayerCubit()),
+      BlocProvider(create: (context) => BattleCubit()),
     ], child: const MyApp()),
   );
 }
