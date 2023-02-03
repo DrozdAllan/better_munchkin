@@ -2,20 +2,20 @@ import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
-class CustomChip extends StatelessWidget {
-  final String name;
+class MonsterChip extends StatelessWidget {
+  final int index;
   final int power;
-  const CustomChip({super.key, required this.name, required this.power});
+  const MonsterChip({super.key, required this.index, required this.power});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 2.0),
       child: Chip(
-        label: Text('$name (${power.toString()})'),
+        label: Text('Monster ${index + 1} (${power.toString()})'),
         deleteIcon: const Icon(RpgAwesome.crossed_bones, size: 16.0),
         onDeleted: () {
-          context.read<BattleCubit>().removePlayer(name);
+          context.read<BattleCubit>().removeMonster(index);
         },
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
-import 'package:better_munchkin/utils/custom_chip.dart';
+import 'package:better_munchkin/utils/monster_chip.dart';
+import 'package:better_munchkin/utils/player_chip.dart';
 import 'package:better_munchkin/views/battle/monster_battle_dialog.dart';
 import 'package:better_munchkin/views/battle/player_battle_dialog.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
@@ -24,7 +25,7 @@ class Battle extends StatelessWidget {
                   // instead of rendering directly the chips, create a list and add the button at the end of it
                   final List<Widget> chipsList = List.generate(
                     state.playerList.length,
-                    (index) => CustomChip(
+                    (index) => PlayerChip(
                         name: state.playerList.elementAt(index).name.toString(),
                         power: state.playerList.elementAt(index).power),
                   );
@@ -58,10 +59,8 @@ class Battle extends StatelessWidget {
                   // instead of rendering directly the chips, create a list and add the button at the end of it
                   final List<Widget> chipsList = List.generate(
                     state.monsterList.length,
-                    // TODO: custom chip need to integrate remove monster function
-                    (index) => CustomChip(
-                        name:
-                            state.monsterList.elementAt(index).name.toString(),
+                    (index) => MonsterChip(
+                        index: index,
                         power: state.monsterList.elementAt(index).power),
                   );
                   chipsList.add(

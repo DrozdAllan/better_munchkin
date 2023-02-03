@@ -1,6 +1,3 @@
-import 'dart:developer';
-import 'dart:ffi';
-
 import 'package:better_munchkin/data/models/monster.dart';
 import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/utils/commons.dart';
@@ -45,10 +42,15 @@ class BattleCubit extends Cubit<BattleSet> {
     return emit(state.copyWith(playerList: newPlayerList));
   }
 
-  void addMonster(Monster monster) {
-	// TODO: add monster number based on monsterList.length ?
+  void addMonster(int monsterPower) {
     final newMonsterList = state.monsterList.toList();
-    newMonsterList.add(monster);
+    newMonsterList.add(Monster(power: monsterPower));
+    return emit(state.copyWith(monsterList: newMonsterList));
+  }
+
+  void removeMonster(int index) {
+    final newMonsterList = state.monsterList;
+    newMonsterList.removeAt(index);
     return emit(state.copyWith(monsterList: newMonsterList));
   }
 }

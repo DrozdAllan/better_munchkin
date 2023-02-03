@@ -1,4 +1,3 @@
-import 'package:better_munchkin/data/models/monster.dart';
 import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 
@@ -45,8 +44,7 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
             ),
             ElevatedButton(
               onPressed: () {
-                context.read<BattleCubit>().addMonster(
-                    Monster(name: 'Monster 1', power: _monsterPower));
+                context.read<BattleCubit>().addMonster(_monsterPower + 1);
                 Navigator.pop(context);
               },
               child: const Text('add monster'),
