@@ -1,8 +1,11 @@
+import 'package:better_munchkin/utils/commons.dart';
+
+@immutable
 class Monster {
   final String name;
   final int power;
 
-  Monster({
+  const Monster({
     required this.name,
     required this.power,
   });

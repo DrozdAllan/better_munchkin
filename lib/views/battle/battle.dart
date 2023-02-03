@@ -1,6 +1,7 @@
 import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:better_munchkin/utils/custom_chip.dart';
+import 'package:better_munchkin/views/battle/monster_battle_dialog.dart';
 import 'package:better_munchkin/views/battle/player_battle_dialog.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
@@ -22,11 +23,10 @@ class Battle extends StatelessWidget {
                     builder: (context, state) {
                   // instead of rendering directly the chips, create a list and add the button at the end of it
                   final List<Widget> chipsList = List.generate(
-                    state.playerList!.length,
+                    state.playerList.length,
                     (index) => CustomChip(
-                        name:
-                            state.playerList!.elementAt(index).name.toString(),
-                        power: state.playerList!.elementAt(index).power),
+                        name: state.playerList.elementAt(index).name.toString(),
+                        power: state.playerList.elementAt(index).power),
                   );
                   chipsList.add(
                     IconButton(
@@ -49,13 +49,37 @@ class Battle extends StatelessWidget {
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Column(children: [
             const Icon(RpgAwesome.monster_skull, size: 52.0),
-            Row(children: [
-              const CustomChip(name: 'Monster 1', power: 12),
-              const CustomChip(name: 'Monster 2', power: 8),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(RpgAwesome.hospital_cross)),
-            ])
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              SizedBox(
+                height: 100.0,
+                width: 460.0,
+                child: BlocBuilder<BattleCubit, BattleSet>(
+                    builder: (context, state) {
+                  // instead of rendering directly the chips, create a list and add the button at the end of it
+                  final List<Widget> chipsList = List.generate(
+                    state.monsterList.length,
+                    // TODO: custom chip need to integrate remove monster function
+                    (index) => CustomChip(
+                        name:
+                            state.monsterList.elementAt(index).name.toString(),
+                        power: state.monsterList.elementAt(index).power),
+                  );
+                  chipsList.add(
+                    IconButton(
+                      onPressed: () => showDialog(
+                        context: context,
+                        builder: (context) => const MonsterBattleDialog(),
+                      ),
+                      icon: const Icon(RpgAwesome.hospital_cross),
+                    ),
+                  );
+                  return Wrap(
+                    alignment: WrapAlignment.center,
+                    children: chipsList,
+                  );
+                }),
+              ),
+            ]),
           ])
         ]),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
