@@ -24,18 +24,15 @@ class BattleCubit extends Cubit<BattleSet> {
   BattleCubit() : super(const BattleSet([], []));
 
   void addPlayer(Player player) {
+	// TODO: do not add the same player twice
     emit(state.copyWith(playerList: [...state.playerList!, player]));
   }
 
   void removePlayer(String playerName) {
-    var newList = state.playerList;
+    final newPlayerList = state.playerList!;
 
-    for (final player in state.playerList!) {
-      if (player.name != playerName) {
-        newList!.add(player);
-      }
-    }
+    newPlayerList.removeWhere((element) => element.name == playerName);
 
-    emit(state.copyWith(playerList: newList));
+    emit(state.copyWith(playerList: newPlayerList));
   }
 }
