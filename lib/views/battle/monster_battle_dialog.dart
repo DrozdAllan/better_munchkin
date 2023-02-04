@@ -9,7 +9,7 @@ class MonsterBattleDialog extends StatefulWidget {
 }
 
 class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
-  late int _monsterPower;
+  int _monsterPower = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
                 useMagnifier: true,
                 magnification: 1.4,
                 onSelectedItemChanged: (index) {
-                  _monsterPower = index;
+                  _monsterPower = index + 1;
                 },
                 children: List.generate(20, (index) {
                   return Text(
@@ -44,7 +44,7 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
             ),
             ElevatedButton(
               onPressed: () {
-                context.read<BattleCubit>().addMonster(_monsterPower + 1);
+                context.read<BattleCubit>().addMonster(_monsterPower);
                 Navigator.pop(context);
               },
               child: const Text('add monster'),

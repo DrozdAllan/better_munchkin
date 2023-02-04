@@ -81,17 +81,33 @@ class Battle extends StatelessWidget {
             ]),
           ])
         ]),
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
-          Text('players win'),
-          Icon(RpgAwesome.horn_call),
-          Text(' or monsters win'),
-          Icon(RpgAwesome.skull)
-        ]),
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
-          Icon(RpgAwesome.perspective_dice_six_two),
-          // TODO: use icons for dice result (1 to 6)
-          Text('dice roll function')
-        ]),
+
+        BlocBuilder<BattleCubit, BattleSet>(
+          builder: (context, state) {
+            if (state.isWinner == true) {
+              return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text('PLAYERS WIN ! '),
+                    Icon(RpgAwesome.horn_call),
+                  ]);
+            } else if (state.isWinner == false) {
+              return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text('PLAYERS LOOSE ! '),
+                    Icon(RpgAwesome.skull)
+                  ]);
+            } else if (state.isWinner == null) {
+              return Container();
+            } else {
+              return Container();
+            }
+          },
+        ),
+        Icon(RpgAwesome.perspective_dice_six_two),
+        // TODO: use icons for dice result (1 to 6)
+        Text('dice roll function')
       ]),
     );
   }
