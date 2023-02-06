@@ -27,7 +27,7 @@ class _StrategicState extends State<Strategic> {
         builder: (context, state) {
           return GridView.count(
             padding: const EdgeInsets.only(top: 0.0),
-            childAspectRatio: 4,
+            childAspectRatio: 3,
             crossAxisCount: 2,
             crossAxisSpacing: 2.0,
             mainAxisSpacing: 2.0,

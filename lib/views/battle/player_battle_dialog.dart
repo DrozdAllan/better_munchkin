@@ -19,10 +19,9 @@ class PlayerBattleDialog extends StatelessWidget {
               height: 345,
               child: BlocBuilder<PlayerCubit, List<Player>>(
                 builder: (context, state) {
-					// TODO: change GridView to Checkbox
                   return GridView.count(
-                    padding: const EdgeInsets.only(top: 12.0),
-                    childAspectRatio: 2,
+                    padding: const EdgeInsets.all(12.0),
+                    childAspectRatio: 3,
                     crossAxisCount: 2,
                     crossAxisSpacing: 25.0,
                     mainAxisSpacing: 25.0,
@@ -33,9 +32,7 @@ class PlayerBattleDialog extends StatelessWidget {
                               backgroundColor: MaterialStateProperty.all(
                                   Color(player.colorId))),
                           onPressed: () {
-                            context
-                                .read<BattleCubit>()
-                                .addPlayer(player);
+                            context.read<BattleCubit>().addPlayer(player);
                             Navigator.pop(context);
                           },
                           child: Text(

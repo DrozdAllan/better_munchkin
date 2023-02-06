@@ -48,7 +48,8 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
               SizedBox(
                 height: 200.0,
                 child: BlockPicker(
-                    // TODO: at least 8 Colors
+                    // TODO: at least 8 Colors for Lightmode
+					// TODO: add if(darkmode) then 8 other colors
                     availableColors: const [
                       Color(0xFF8EDBCE),
                       Color(0xFFFFC4C6),

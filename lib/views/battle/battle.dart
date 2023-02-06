@@ -18,8 +18,9 @@ class Battle extends StatelessWidget {
             const Icon(RpgAwesome.knight_helmet, size: 52.0),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               SizedBox(
+                // TODO: MEDIA QUERY SIZES
                 height: 100.0,
-                width: 460.0,
+                width: 360.0,
                 child: BlocBuilder<BattleCubit, BattleSet>(
                     builder: (context, state) {
                   // instead of rendering directly the chips, create a list and add the button at the end of it
@@ -52,8 +53,9 @@ class Battle extends StatelessWidget {
             const Icon(RpgAwesome.monster_skull, size: 52.0),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               SizedBox(
+                // TODO: MEDIA QUERY SIZES
                 height: 100.0,
-                width: 460.0,
+                width: 360.0,
                 child: BlocBuilder<BattleCubit, BattleSet>(
                     builder: (context, state) {
                   // instead of rendering directly the chips, create a list and add the button at the end of it
@@ -105,9 +107,9 @@ class Battle extends StatelessWidget {
             }
           },
         ),
-        Icon(RpgAwesome.perspective_dice_six_two),
+        const Icon(RpgAwesome.perspective_dice_six_two),
         // TODO: use icons for dice result (1 to 6)
-        Text('dice roll function')
+        const Text('Roll the dice')
       ]),
     );
   }
