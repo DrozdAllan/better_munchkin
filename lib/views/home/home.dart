@@ -55,14 +55,15 @@ class Home extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            ElevatedButton(
+            TextButton(
+              style: ButtonStyle(elevation: MaterialStateProperty.all(0.0)),
               onPressed: () => showDialog(
                 context: context,
                 builder: (context) => const AddPlayerDialog(),
               ),
               child: const Text('Add Player'),
             ),
-            ElevatedButton(
+            TextButton(
               onPressed: () => showDialog(
                 context: context,
                 builder: (context) => const RemovePlayerDialog(),

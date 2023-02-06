@@ -27,7 +27,7 @@ class _PlayerCardState extends State<PlayerCard> {
       child: Column(
         children: [
           Text(
-            widget.player.name.toString().toUpperCase(),
+            widget.player.name,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 28.0,

@@ -13,7 +13,7 @@ class AddPlayerDialog extends StatefulWidget {
 class _AddPlayerDialogState extends State<AddPlayerDialog> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _name = TextEditingController();
-  Color _color = const Color(0xFF8EDBCE);
+  Color _color = const Color(0xFFffbcaf);
 
   @override
   void dispose() {
@@ -30,14 +30,19 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
     return Dialog(
       child: Container(
         height: 355.0,
+        width: 350,
         padding: const EdgeInsets.all(8.0),
         child: Form(
           key: _formKey,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               TextFormField(
+                textAlign: TextAlign.center,
                 controller: _name,
-                decoration: const InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(
+                    label: Center(child: Text('Name')),
+                    border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a name';
@@ -46,18 +51,21 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
                 },
               ),
               SizedBox(
-                height: 200.0,
+                height: 150.0,
                 child: BlockPicker(
-                    // TODO: at least 8 Colors for Lightmode
-					// TODO: add if(darkmode) then 8 other colors
+                    // TODO: add if(darkmode) then 8 other colors
                     availableColors: const [
+                      Color(0xFFffbcaf),
+                      Color(0xFFffb2ff),
+                      Color(0xFFc0cfff),
                       Color(0xFF8EDBCE),
-                      Color(0xFFFFC4C6),
+                      Color(0xFFe1ffb1),
+                      Color(0xFFb5ffff),
+                      Color(0xFFffffb1),
                       Color(0xFFFFDE9C),
-                      Color(0xFFC5E7FF)
                     ], pickerColor: _color, onColorChanged: changeColor),
               ),
-              ElevatedButton(
+              OutlinedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     context.read<PlayerCubit>().addPlayer(Player(

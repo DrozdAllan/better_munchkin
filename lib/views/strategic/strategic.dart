@@ -42,7 +42,7 @@ class _StrategicState extends State<Strategic> {
                     children: [
                       Center(
                         child: Text(
-                          player.name.toString().toUpperCase(),
+                          player.name,
                           style: const TextStyle(fontSize: 28.0),
                         ),
                       ),
@@ -54,6 +54,7 @@ class _StrategicState extends State<Strategic> {
                               const Icon(
                                 RpgAwesome.corked_tube,
                               ),
+							  // TODO: wrap with levelDialog()
                               Text(player.level.toString(),
                                   style: const TextStyle(fontSize: 38.0)),
                             ],
@@ -64,6 +65,7 @@ class _StrategicState extends State<Strategic> {
                                 RpgAwesome.large_hammer,
                                 //   color: Colors.white
                               ),
+							  // TODO: wrap with bonusDialog()
                               Text(player.bonus.toString(),
                                   style: const TextStyle(fontSize: 38.0)),
                             ],

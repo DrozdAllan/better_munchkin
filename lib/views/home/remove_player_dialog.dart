@@ -22,24 +22,27 @@ class RemovePlayerDialog extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 12.0),
                     childAspectRatio: 2,
                     crossAxisCount: 2,
-                    crossAxisSpacing: 25.0,
-                    mainAxisSpacing: 25.0,
+                    crossAxisSpacing: 12.0,
+                    mainAxisSpacing: 12.0,
                     children: [
                       for (Player player in state)
-                        TextButton(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Color(player.colorId))),
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             context
                                 .read<PlayerCubit>()
                                 .removePlayer(player.name);
                             Navigator.pop(context);
                           },
-                          child: Text(
-                            player.name.toString().toUpperCase(),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(player.colorId),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Center(
+                                child:
+                                    Text(player.name.toString().toUpperCase())),
                           ),
-                        )
+                        ),
                     ],
                   );
                 },

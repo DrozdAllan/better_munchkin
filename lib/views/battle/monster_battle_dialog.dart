@@ -15,7 +15,7 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        height: 224.0,
+        height: 250.0,
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
@@ -42,12 +42,12 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
                 }, growable: false),
               ),
             ),
-            ElevatedButton(
+            OutlinedButton(
               onPressed: () {
                 context.read<BattleCubit>().addMonster(_monsterPower);
                 Navigator.pop(context);
               },
-              child: const Text('add monster'),
+              child: const Text('Add Monster'),
             ),
           ],
         ),

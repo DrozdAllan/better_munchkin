@@ -16,6 +16,7 @@ class BattleFab extends StatelessWidget {
         );
       },
       child: const Icon(
+		// TODO: change icon
         RpgAwesome.large_hammer,
         //   color: Colors.white
       ),

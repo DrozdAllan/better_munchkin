@@ -2,6 +2,7 @@ import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:better_munchkin/utils/monster_chip.dart';
 import 'package:better_munchkin/utils/player_chip.dart';
+import 'package:better_munchkin/views/battle/dice.dart';
 import 'package:better_munchkin/views/battle/monster_battle_dialog.dart';
 import 'package:better_munchkin/views/battle/player_battle_dialog.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
@@ -83,7 +84,6 @@ class Battle extends StatelessWidget {
             ]),
           ])
         ]),
-
         BlocBuilder<BattleCubit, BattleSet>(
           builder: (context, state) {
             if (state.isWinner == true) {
@@ -100,16 +100,12 @@ class Battle extends StatelessWidget {
                     Text('PLAYERS LOOSE ! '),
                     Icon(RpgAwesome.skull)
                   ]);
-            } else if (state.isWinner == null) {
-              return Container();
             } else {
               return Container();
             }
           },
         ),
-        const Icon(RpgAwesome.perspective_dice_six_two),
-        // TODO: use icons for dice result (1 to 6)
-        const Text('Roll the dice')
+        const DiceWidget(),
       ]),
     );
   }
