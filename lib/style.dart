@@ -30,6 +30,7 @@ ThemeData myLightTheme = ThemeData(
   ),
 );
 
-ThemeData myDarkTheme = ThemeData.dark(
+ThemeData myDarkTheme = ThemeData(
+  brightness: Brightness.dark,
   useMaterial3: true,
 );

@@ -87,6 +87,7 @@ class Battle extends StatelessWidget {
         BlocBuilder<BattleCubit, BattleSet>(
           builder: (context, state) {
             if (state.isWinner == true) {
+              // TODO: add animation
               return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [

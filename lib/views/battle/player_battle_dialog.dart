@@ -20,25 +20,32 @@ class PlayerBattleDialog extends StatelessWidget {
               child: BlocBuilder<PlayerCubit, List<Player>>(
                 builder: (context, state) {
                   return GridView.count(
-                    padding: const EdgeInsets.all(12.0),
-                    childAspectRatio: 3,
+                    padding: const EdgeInsets.only(top: 12.0),
+                    childAspectRatio: 2,
                     crossAxisCount: 2,
-                    crossAxisSpacing: 25.0,
-                    mainAxisSpacing: 25.0,
+                    crossAxisSpacing: 5.0,
+                    mainAxisSpacing: 5.0,
                     children: [
                       for (Player player in state)
-                        TextButton(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Color(player.colorId))),
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             context.read<BattleCubit>().addPlayer(player);
                             Navigator.pop(context);
                           },
-                          child: Text(
-                            player.name.toString().toUpperCase(),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(player.colorId),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                player.name,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
                           ),
-                        )
+                        ),
                     ],
                   );
                 },

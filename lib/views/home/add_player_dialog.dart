@@ -1,6 +1,7 @@
 import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
+import 'package:better_munchkin/utils/string_casing_extension.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class AddPlayerDialog extends StatefulWidget {
@@ -69,7 +70,7 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     context.read<PlayerCubit>().addPlayer(Player(
-                        name: _name.text,
+                        name: _name.text.toTitleCase(),
                         colorId: _color.value,
                         level: 1,
                         bonus: 0,

@@ -14,6 +14,8 @@ class PlayerCard extends StatefulWidget {
 }
 
 class _PlayerCardState extends State<PlayerCard> {
+  final _iconSize = 34.0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,8 +24,8 @@ class _PlayerCardState extends State<PlayerCard> {
         border: Border.all(color: Color(widget.player.colorId), width: 3.0),
         color: Color(widget.player.colorId),
       ),
-      margin: const EdgeInsets.only(top: 6.0),
       height: 190.0,
+      margin: const EdgeInsets.only(bottom: 2.0),
       child: Column(
         children: [
           Text(
@@ -34,19 +36,17 @@ class _PlayerCardState extends State<PlayerCard> {
             ),
           ),
           Row(
-            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                height: 140.0,
+                height: 120.0,
                 width: 100.0,
                 child: Row(children: [
-                  const Icon(
+                  Icon(
                     RpgAwesome.corked_tube,
+                    size: _iconSize,
                   ),
-                  SizedBox(
-                    height: 140.0,
-                    width: 75.0,
+                  Expanded(
                     child: BlocBuilder<IsEpicCubit, bool>(
                       builder: (context, state) {
                         return ListWheelScrollView(
@@ -64,7 +64,6 @@ class _PlayerCardState extends State<PlayerCard> {
                           children: List.generate(state ? 19 : 9, (index) {
                             return Text(
                               (index + 1).toString(),
-                              //   widget.player.level.toString(),
                               style: const TextStyle(
                                 fontSize: 38.0,
                               ),
@@ -77,15 +76,14 @@ class _PlayerCardState extends State<PlayerCard> {
                 ]),
               ),
               SizedBox(
-                height: 140.0,
+                height: 120.0,
                 width: 100.0,
                 child: Row(children: [
-                  const Icon(
+                  Icon(
                     RpgAwesome.large_hammer,
+                    size: _iconSize,
                   ),
-                  SizedBox(
-                    height: 140.0,
-                    width: 75.0,
+                  Expanded(
                     child: ListWheelScrollView(
                       itemExtent: 52,
                       diameterRatio: 1.2,
@@ -110,15 +108,14 @@ class _PlayerCardState extends State<PlayerCard> {
                 ]),
               ),
               SizedBox(
-                height: 140.0,
+                height: 120.0,
                 width: 100.0,
                 child: Row(children: [
-                  const Icon(
+                  Icon(
                     RpgAwesome.targeted,
+                    size: _iconSize,
                   ),
-                  SizedBox(
-                    height: 140.0,
-                    width: 75.0,
+                  Expanded(
                     child: Center(
                       child: Text(
                         widget.player.power.toString(),

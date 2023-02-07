@@ -9,21 +9,20 @@ class RemovePlayerDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        height: 400.0,
+        height: 500.0,
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             const Text('Select the player to remove'),
-            SizedBox(
-              height: 345,
+            Expanded(
               child: BlocBuilder<PlayerCubit, List<Player>>(
                 builder: (context, state) {
                   return GridView.count(
                     padding: const EdgeInsets.only(top: 12.0),
                     childAspectRatio: 2,
                     crossAxisCount: 2,
-                    crossAxisSpacing: 12.0,
-                    mainAxisSpacing: 12.0,
+                    crossAxisSpacing: 5.0,
+                    mainAxisSpacing: 5.0,
                     children: [
                       for (Player player in state)
                         GestureDetector(
@@ -39,8 +38,12 @@ class RemovePlayerDialog extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Center(
-                                child:
-                                    Text(player.name.toString().toUpperCase())),
+                              child: Text(
+                                player.name,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
                           ),
                         ),
                     ],

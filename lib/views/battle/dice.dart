@@ -5,6 +5,7 @@ import 'package:fluttericon/rpg_awesome_icons.dart';
 
 class DiceWidget extends StatefulWidget {
   // TODO: LATER: Rive & 1 animation for each dice side
+  // TODO: add animation
   const DiceWidget({
     Key? key,
   }) : super(key: key);
@@ -28,14 +29,17 @@ class _DiceWidgetState extends State<DiceWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () => diceRoll(),
-        child: isInit == false
-            ? const Icon(
-                RpgAwesome.perspective_dice_six_two,
-                size: 52.0,
-              )
-            : resultDice);
+    return SizedBox(
+      height: 75.0,
+      child: GestureDetector(
+          onTap: () => diceRoll(),
+          child: isInit == false
+              ? const Icon(
+                  RpgAwesome.perspective_dice_six_two,
+                  size: 52.0,
+                )
+              : resultDice),
+    );
   }
 
   void diceRoll() {

@@ -15,6 +15,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        title: const Text('Better Munchkin'),
         leading: BlocBuilder<IsEpicCubit, bool>(
           builder: (context, state) {
             return IconButton(

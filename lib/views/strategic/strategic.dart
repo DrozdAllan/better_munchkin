@@ -1,7 +1,5 @@
 import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/player_cubit.dart';
-import 'package:better_munchkin/utils/battle_fab.dart';
-import 'package:flutter/services.dart';
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
@@ -14,21 +12,17 @@ class Strategic extends StatefulWidget {
 
 class _StrategicState extends State<Strategic> {
   @override
-  void initState() {
-    super.initState();
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<PlayerCubit, List<Player>>(
         builder: (context, state) {
           return GridView.count(
-            padding: const EdgeInsets.only(top: 0.0),
-            childAspectRatio: 3,
-            crossAxisCount: 2,
+            childAspectRatio: 2,
+            // TODO: finish responsive for 2 orientations
+            crossAxisCount: MediaQuery.of(context).size.height >
+                    MediaQuery.of(context).size.width
+                ? 2
+                : 3,
             crossAxisSpacing: 2.0,
             mainAxisSpacing: 2.0,
             children: [
@@ -54,7 +48,7 @@ class _StrategicState extends State<Strategic> {
                               const Icon(
                                 RpgAwesome.corked_tube,
                               ),
-							  // TODO: wrap with levelDialog()
+                              // TODO: wrap with levelDialog()
                               Text(player.level.toString(),
                                   style: const TextStyle(fontSize: 38.0)),
                             ],
@@ -65,7 +59,7 @@ class _StrategicState extends State<Strategic> {
                                 RpgAwesome.large_hammer,
                                 //   color: Colors.white
                               ),
-							  // TODO: wrap with bonusDialog()
+                              // TODO: wrap with bonusDialog()
                               Text(player.bonus.toString(),
                                   style: const TextStyle(fontSize: 38.0)),
                             ],
@@ -88,18 +82,6 @@ class _StrategicState extends State<Strategic> {
           );
         },
       ),
-      floatingActionButton: const BattleFab(),
     );
-  }
-
-  @override
-  void dispose() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    super.dispose();
   }
 }
