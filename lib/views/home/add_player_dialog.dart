@@ -15,6 +15,8 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _name = TextEditingController();
   Color _color = const Color(0xFFffbcaf);
+// To test clip
+//   Color _color = Color.fromARGB(255, 0, 0, 0);
 
   @override
   void dispose() {

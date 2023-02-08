@@ -14,18 +14,17 @@ class PlayerCard extends StatefulWidget {
 }
 
 class _PlayerCardState extends State<PlayerCard> {
-  final _iconSize = 34.0;
+  final _iconSize = 28.0;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Color(widget.player.colorId), width: 3.0),
         color: Color(widget.player.colorId),
       ),
-      height: 190.0,
-      margin: const EdgeInsets.only(bottom: 2.0),
+      height: 150.0,
+      margin: const EdgeInsets.all(3.0),
       child: Column(
         children: [
           Text(
@@ -36,7 +35,7 @@ class _PlayerCardState extends State<PlayerCard> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                height: 120.0,
+                height: 100.0,
                 width: 100.0,
                 child: Row(children: [
                   Icon(
@@ -47,10 +46,8 @@ class _PlayerCardState extends State<PlayerCard> {
                     child: BlocBuilder<IsEpicCubit, bool>(
                       builder: (context, state) {
                         return ListWheelScrollView(
-                          itemExtent: 52,
+                          itemExtent: 42,
                           diameterRatio: 1.2,
-                          useMagnifier: true,
-                          magnification: 1.2,
                           onSelectedItemChanged: (index) {
                             // Note : it starts with index 0 but the minimum level is 1
                             // so it's always index + 1
@@ -69,7 +66,7 @@ class _PlayerCardState extends State<PlayerCard> {
                 ]),
               ),
               SizedBox(
-                height: 120.0,
+                height: 100.0,
                 width: 100.0,
                 child: Row(children: [
                   Icon(
@@ -78,10 +75,10 @@ class _PlayerCardState extends State<PlayerCard> {
                   ),
                   Expanded(
                     child: ListWheelScrollView(
-                      itemExtent: 52,
+                      itemExtent: 42,
                       diameterRatio: 1.2,
-                      useMagnifier: true,
-                      magnification: 1.2,
+                      //   useMagnifier: true,
+                      //   magnification: 1.2,
                       onSelectedItemChanged: (index) {
                         context
                             .read<PlayerCubit>()
@@ -98,7 +95,7 @@ class _PlayerCardState extends State<PlayerCard> {
                 ]),
               ),
               SizedBox(
-                height: 120.0,
+                height: 100.0,
                 width: 100.0,
                 child: Row(children: [
                   Icon(

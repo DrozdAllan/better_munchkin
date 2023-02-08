@@ -8,6 +8,7 @@ class BattleFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
+      mini: true,
       onPressed: () {
         Navigator.of(context).push(
           MaterialPageRoute(
@@ -17,7 +18,7 @@ class BattleFab extends StatelessWidget {
       },
       child: const Icon(
         RpgAwesome.crossed_axes,
-        size: 36.0,
+        size: 28.0,
       ),
     );
   }
