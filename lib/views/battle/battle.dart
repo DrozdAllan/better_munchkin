@@ -19,16 +19,15 @@ class Battle extends StatelessWidget {
             const Icon(RpgAwesome.knight_helmet, size: 52.0),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               SizedBox(
-                // TODO: MEDIA QUERY SIZES
-                height: 100.0,
-                width: 360.0,
+                width: MediaQuery.of(context).size.width,
                 child: BlocBuilder<BattleCubit, BattleSet>(
                     builder: (context, state) {
                   // instead of rendering directly the chips, create a list and add the button at the end of it
                   final List<Widget> chipsList = List.generate(
                     state.playerList.length,
                     (index) => PlayerChip(
-                        name: state.playerList.elementAt(index).name.toString(),
+                        name: state.playerList.elementAt(index).name,
+                        colorId: state.playerList.elementAt(index).colorId,
                         power: state.playerList.elementAt(index).power),
                   );
                   chipsList.add(
@@ -54,9 +53,7 @@ class Battle extends StatelessWidget {
             const Icon(RpgAwesome.monster_skull, size: 52.0),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               SizedBox(
-                // TODO: MEDIA QUERY SIZES
-                height: 100.0,
-                width: 360.0,
+                width: MediaQuery.of(context).size.width,
                 child: BlocBuilder<BattleCubit, BattleSet>(
                     builder: (context, state) {
                   // instead of rendering directly the chips, create a list and add the button at the end of it

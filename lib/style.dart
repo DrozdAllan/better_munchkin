@@ -16,13 +16,10 @@ const Color _blackColor = Color(0xFF212430);
 ThemeData myLightTheme = ThemeData(
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(seedColor: _primaryColor),
-  primaryTextTheme: TextTheme(),
-  dividerTheme: const DividerThemeData(color: _primaryColor),
+  iconTheme: const IconThemeData(color: _blackColor),
   // TODO: chip theme
-//   chipTheme: const ChipThemeData(backgroundColor: _primaryColor),
-//   textButtonTheme: const TextButtonThemeData(),
+  chipTheme: const ChipThemeData(backgroundColor: _primaryColor),
   appBarTheme: const AppBarTheme(
-    // systemOverlayStyle: SystemUiOverlayStyle.light,
     centerTitle: true,
     titleTextStyle: TextStyle(fontSize: 38.0, color: _blackColor),
   ),
