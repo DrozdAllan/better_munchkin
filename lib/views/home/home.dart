@@ -14,12 +14,10 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const Text('Better Munchkin'),
         leading: BlocBuilder<IsEpicCubit, bool>(
           builder: (context, state) {
             return IconButton(
-              splashRadius: 20.0,
               icon: state
                   ? const Icon(RpgAwesome.wyvern)
                   : const Icon(RpgAwesome.gecko),
@@ -40,7 +38,6 @@ class Home extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            splashRadius: 20.0,
             icon: const Icon(RpgAwesome.circle_of_circles),
             onPressed: () {
               Navigator.of(context).push(

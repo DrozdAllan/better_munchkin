@@ -13,16 +13,15 @@ class Strategic extends StatefulWidget {
 class _StrategicState extends State<Strategic> {
   @override
   Widget build(BuildContext context) {
+    final landscape =
+        MediaQuery.of(context).size.height < MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: BlocBuilder<PlayerCubit, List<Player>>(
         builder: (context, state) {
           return GridView.count(
-            childAspectRatio: 2,
-            // TODO: finish responsive for 2 orientations
-            crossAxisCount: MediaQuery.of(context).size.height >
-                    MediaQuery.of(context).size.width
-                ? 2
-                : 3,
+            childAspectRatio: landscape ? 2.5 : 2,
+            crossAxisCount: landscape ? 3 : 2,
             crossAxisSpacing: 2.0,
             mainAxisSpacing: 2.0,
             children: [
@@ -37,7 +36,6 @@ class _StrategicState extends State<Strategic> {
                       Center(
                         child: Text(
                           player.name,
-                          style: const TextStyle(fontSize: 28.0),
                         ),
                       ),
                       Row(
@@ -50,7 +48,8 @@ class _StrategicState extends State<Strategic> {
                               ),
                               // TODO: wrap with levelDialog()
                               Text(player.level.toString(),
-                                  style: const TextStyle(fontSize: 38.0)),
+                                  style:
+                                      Theme.of(context).textTheme.bodyMedium),
                             ],
                           ),
                           Column(
@@ -61,7 +60,8 @@ class _StrategicState extends State<Strategic> {
                               ),
                               // TODO: wrap with bonusDialog()
                               Text(player.bonus.toString(),
-                                  style: const TextStyle(fontSize: 38.0)),
+                                  style:
+                                      Theme.of(context).textTheme.bodyMedium),
                             ],
                           ),
                           Column(
@@ -70,7 +70,8 @@ class _StrategicState extends State<Strategic> {
                                 RpgAwesome.targeted,
                               ),
                               Text(player.power.toString(),
-                                  style: const TextStyle(fontSize: 38.0)),
+                                  style:
+                                      Theme.of(context).textTheme.bodyMedium),
                             ],
                           ),
                         ],

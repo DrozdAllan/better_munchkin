@@ -30,10 +30,7 @@ class _PlayerCardState extends State<PlayerCard> {
         children: [
           Text(
             widget.player.name,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 28.0,
-            ),
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -53,7 +50,7 @@ class _PlayerCardState extends State<PlayerCard> {
                           itemExtent: 52,
                           diameterRatio: 1.2,
                           useMagnifier: true,
-                          magnification: 1.4,
+                          magnification: 1.2,
                           onSelectedItemChanged: (index) {
                             // Note : it starts with index 0 but the minimum level is 1
                             // so it's always index + 1
@@ -62,12 +59,8 @@ class _PlayerCardState extends State<PlayerCard> {
                                 .setLevel(widget.player.name, index + 1);
                           },
                           children: List.generate(state ? 19 : 9, (index) {
-                            return Text(
-                              (index + 1).toString(),
-                              style: const TextStyle(
-                                fontSize: 38.0,
-                              ),
-                            );
+                            return Text((index + 1).toString(),
+                                style: Theme.of(context).textTheme.bodyMedium);
                           }, growable: false),
                         );
                       },
@@ -88,7 +81,7 @@ class _PlayerCardState extends State<PlayerCard> {
                       itemExtent: 52,
                       diameterRatio: 1.2,
                       useMagnifier: true,
-                      magnification: 1.4,
+                      magnification: 1.2,
                       onSelectedItemChanged: (index) {
                         context
                             .read<PlayerCubit>()
@@ -96,12 +89,9 @@ class _PlayerCardState extends State<PlayerCard> {
                       },
                       children: List.generate(30, (index) {
                         return Text(
-                          //   widget.player.bonus.toString(),
-                          index.toString(),
-                          style: const TextStyle(
-                            fontSize: 38.0,
-                          ),
-                        );
+                            //   widget.player.bonus.toString(),
+                            index.toString(),
+                            style: Theme.of(context).textTheme.bodyMedium);
                       }, growable: false),
                     ),
                   ),
@@ -117,12 +107,8 @@ class _PlayerCardState extends State<PlayerCard> {
                   ),
                   Expanded(
                     child: Center(
-                      child: Text(
-                        widget.player.power.toString(),
-                        style: const TextStyle(
-                          fontSize: 54.0,
-                        ),
-                      ),
+                      child: Text(widget.player.power.toString(),
+                          style: Theme.of(context).textTheme.bodyMedium),
                     ),
                   ),
                 ]),

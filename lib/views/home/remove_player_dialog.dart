@@ -40,8 +40,6 @@ class RemovePlayerDialog extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 player.name,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
