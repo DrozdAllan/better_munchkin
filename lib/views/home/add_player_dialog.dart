@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
@@ -14,9 +16,29 @@ class AddPlayerDialog extends StatefulWidget {
 class _AddPlayerDialogState extends State<AddPlayerDialog> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _name = TextEditingController();
-  Color _color = const Color(0xFFffbcaf);
-// To test clip
-//   Color _color = Color.fromARGB(255, 0, 0, 0);
+  Color _color = const Color(0xFFFFFFFF);
+
+  List<Color> lightColors = const [
+    Color(0xFFffbcaf),
+    Color(0xFFffb2ff),
+    Color(0xFFc0cfff),
+    Color(0xFF8EDBCE),
+    Color(0xFFe1ffb1),
+    Color(0xFFb5ffff),
+    Color(0xFFffffb1),
+    Color(0xFFFFDE9C),
+  ];
+
+  List<Color> darkColors = const [
+    Color(0xFFc62828),
+    Color(0xFF6a1b9a),
+    Color(0xFF283593),
+    Color(0xFF0277bd),
+    Color(0xFF00695c),
+    Color(0xFF558b2f),
+    Color(0xFFff8f00),
+    Color(0xFFef6c00),
+  ];
 
   @override
   void dispose() {
@@ -56,21 +78,21 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
               SizedBox(
                 height: 150.0,
                 child: BlockPicker(
-                    // TODO: add if(darkmode) then 8 other colors
-                    availableColors: const [
-                      Color(0xFFffbcaf),
-                      Color(0xFFffb2ff),
-                      Color(0xFFc0cfff),
-                      Color(0xFF8EDBCE),
-                      Color(0xFFe1ffb1),
-                      Color(0xFFb5ffff),
-                      Color(0xFFffffb1),
-                      Color(0xFFFFDE9C),
-                    ], pickerColor: _color, onColorChanged: changeColor),
+                    availableColors:
+                        Theme.of(context).brightness == Brightness.light
+                            ? lightColors
+                            : darkColors,
+                    pickerColor: _color,
+                    onColorChanged: changeColor),
               ),
               OutlinedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
+                    if (_color == const Color(0xFFFFFFFF)) {
+                      Theme.of(context).brightness == Brightness.light
+                          ? _color = const Color(0xFFffbcaf)
+                          : _color = const Color(0xFFc62828);
+                    }
                     context.read<PlayerCubit>().addPlayer(Player(
                         name: _name.text.toTitleCase(),
                         colorId: _color.value,

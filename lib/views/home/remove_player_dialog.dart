@@ -9,13 +9,13 @@ class RemovePlayerDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        height: 400.0,
+        height: MediaQuery.of(context).size.height / 1.75,
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Column(
           children: [
             const Text('Select the player to remove'),
             SizedBox(
-              height: 360,
+              height: 338,
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(
                   Radius.elliptical(22.0, 15.0),

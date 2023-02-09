@@ -15,7 +15,7 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        height: 250.0,
+        height: MediaQuery.of(context).size.height / 1.75,
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [

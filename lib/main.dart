@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Munchkin En Mieux',
+      // TODO: remove the line below
+      debugShowCheckedModeBanner: false,
       theme: myLightTheme,
       darkTheme: myDarkTheme,
       themeMode: ThemeMode.system,
