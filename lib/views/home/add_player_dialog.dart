@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
@@ -72,6 +70,11 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a name';
                   }
+                  for (Player player in context.read<PlayerCubit>().state) {
+                    if (player.name == value.toTitleCase()) {
+                      return 'Name already taken';
+                    }
+                  }
                   return null;
                 },
               ),
@@ -85,7 +88,7 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
                     pickerColor: _color,
                     onColorChanged: changeColor),
               ),
-              OutlinedButton(
+              TextButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     if (_color == const Color(0xFFFFFFFF)) {

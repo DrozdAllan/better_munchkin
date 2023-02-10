@@ -42,7 +42,7 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
                 }, growable: false),
               ),
             ),
-            OutlinedButton(
+            TextButton(
               onPressed: () {
                 context.read<BattleCubit>().addMonster(_monsterPower);
                 Navigator.pop(context);
