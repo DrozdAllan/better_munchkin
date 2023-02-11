@@ -17,6 +17,9 @@ class _StrategicState extends State<Strategic> {
         MediaQuery.of(context).size.height < MediaQuery.of(context).size.width;
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Strategic View'),
+      ),
       body: BlocBuilder<PlayerCubit, List<Player>>(
         builder: (context, state) {
           return GridView.count(

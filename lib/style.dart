@@ -1,49 +1,40 @@
 import 'package:better_munchkin/utils/commons.dart';
-
-// if you want google fonts
 import 'package:google_fonts/google_fonts.dart';
 
-const _titleLargeSize = 32.0;
-const _titleMediumSize = 28.0;
-
-// if you want custom fonts, store them in assets/fonts + note them in pubspec.yaml
-const portLligatSans = 'PortLligatSans';
+const _headlineMediumSize = 30.0;
+const _titleMediumSize = 24.0;
 
 const Color _primaryColor = Color(0xFFc0cfff);
-const Color _blackColor = Color(0xFF343952);
-const Color _whiteColor = Color(0xFFE8EDFF);
+const Color _primaryDarkColor = Color(0xFF343952);
+const Color _primaryLightColor = Color(0xFFE8EDFF);
 
 ThemeData myLightTheme = ThemeData(
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(seedColor: _primaryColor),
   fontFamily: GoogleFonts.saira().fontFamily,
-  iconTheme: const IconThemeData(color: _blackColor),
-  dialogTheme: const DialogTheme(surfaceTintColor: _whiteColor),
+  iconTheme: const IconThemeData(color: _primaryDarkColor),
+  dialogTheme: const DialogTheme(surfaceTintColor: _primaryLightColor),
   chipTheme: const ChipThemeData(backgroundColor: _primaryColor),
   iconButtonTheme: const IconButtonThemeData(
-      style:
-          ButtonStyle(foregroundColor: MaterialStatePropertyAll(_blackColor))),
+      style: ButtonStyle(
+          foregroundColor: MaterialStatePropertyAll(_primaryDarkColor))),
   appBarTheme: const AppBarTheme(
     centerTitle: true,
-    titleTextStyle: TextStyle(fontSize: 30.0, color: _blackColor),
+    titleTextStyle:
+        TextStyle(fontSize: _headlineMediumSize, color: _primaryDarkColor),
   ),
   bottomAppBarTheme: const BottomAppBarTheme(
-      surfaceTintColor: Colors.white,
-      color: Colors.white,
-      height: 50.0,
-      padding: EdgeInsets.all(0.0)),
+      color: _primaryLightColor, height: 50.0, padding: EdgeInsets.all(0.0)),
   snackBarTheme: const SnackBarThemeData(
-    backgroundColor: _blackColor,
+    backgroundColor: _primaryDarkColor,
     contentTextStyle: TextStyle(fontSize: 14.0),
   ),
   textTheme: const TextTheme(
-    displayLarge: TextStyle(),
-    // Title of Home and Strategic
-    titleLarge: TextStyle(fontSize: _titleLargeSize),
     // Player names on PlayerCard, AddPlayerDialog, RemovePlayerDialog, Strategic
-    titleMedium: TextStyle(fontSize: _titleMediumSize, color: _blackColor),
+    titleMedium:
+        TextStyle(fontSize: _titleMediumSize, color: _primaryDarkColor),
     // Numbers on PlayerCard & Strategic
-    bodyMedium: TextStyle(fontSize: _titleMediumSize, color: _blackColor),
+    bodyMedium: TextStyle(fontSize: _titleMediumSize, color: _primaryDarkColor),
   ),
 );
 
@@ -53,19 +44,29 @@ ThemeData myDarkTheme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.dark, seedColor: _primaryColor),
   fontFamily: GoogleFonts.saira().fontFamily,
-  iconTheme: const IconThemeData(color: _whiteColor),
-  chipTheme: const ChipThemeData(backgroundColor: _primaryColor),
+  iconTheme: const IconThemeData(color: _primaryLightColor),
+  dialogTheme: const DialogTheme(surfaceTintColor: _primaryDarkColor),
+  chipTheme: const ChipThemeData(backgroundColor: _primaryDarkColor),
+  iconButtonTheme: const IconButtonThemeData(
+      style: ButtonStyle(
+          foregroundColor: MaterialStatePropertyAll(_primaryLightColor))),
   appBarTheme: const AppBarTheme(
     centerTitle: true,
-    titleTextStyle: TextStyle(fontSize: 30.0, color: _whiteColor),
+    titleTextStyle:
+        TextStyle(fontSize: _headlineMediumSize, color: _primaryLightColor),
+  ),
+  bottomAppBarTheme: const BottomAppBarTheme(
+      color: _primaryDarkColor, height: 50.0, padding: EdgeInsets.all(0.0)),
+  snackBarTheme: const SnackBarThemeData(
+    backgroundColor: _primaryDarkColor,
+    contentTextStyle: TextStyle(fontSize: 14.0),
   ),
   textTheme: const TextTheme(
-    displayLarge: TextStyle(),
-    // Title of Home and Strategic
-    titleLarge: TextStyle(fontSize: _titleLargeSize),
     // Player names on PlayerCard, AddPlayerDialog, RemovePlayerDialog, Strategic
-    titleMedium: TextStyle(fontSize: _titleMediumSize, color: _whiteColor),
+    titleMedium:
+        TextStyle(fontSize: _titleMediumSize, color: _primaryLightColor),
     // Numbers on PlayerCard & Strategic
-    bodyMedium: TextStyle(fontSize: _titleMediumSize),
+    bodyMedium:
+        TextStyle(fontSize: _titleMediumSize, color: _primaryLightColor),
   ),
 );
