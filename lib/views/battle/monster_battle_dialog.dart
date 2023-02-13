@@ -15,14 +15,15 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        height: MediaQuery.of(context).size.height / 1.75,
-        padding: const EdgeInsets.all(8.0),
+        height: MediaQuery.of(context).size.height / 2.50,
+        padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Column(
           children: [
-            const Text('Select the monster\'s power'),
-            SizedBox(
-              height: 140.0,
-              width: 75.0,
+            const Text(
+              'Select the monster\'s power',
+              textAlign: TextAlign.center,
+            ),
+            Expanded(
               child: ListWheelScrollView(
                 itemExtent: 52,
                 diameterRatio: 1.2,

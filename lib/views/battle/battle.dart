@@ -88,14 +88,14 @@ class Battle extends StatelessWidget {
               return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Text('PLAYERS WIN ! '),
+                    Text('PLAYERS WIN '),
                     Icon(RpgAwesome.horn_call),
                   ]);
             } else if (state.isWinner == false) {
               return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Text('PLAYERS LOOSE ! '),
+                    Text('PLAYERS LOOSE '),
                     Icon(RpgAwesome.skull)
                   ]);
             } else {

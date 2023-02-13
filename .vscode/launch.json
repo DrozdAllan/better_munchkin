@@ -1,29 +1,29 @@
-// {
-// 	"version": "0.2.0",
-// 	"configurations": [
-// 		{
-// 			"name": "Flutter-All",
-// 			"preLaunchTask": "Flutter-Launch-All",
-// 			"type": "dart",
-// 			"request": "launch"
-// 		},
-// 		{
-// 			"name": "Flutter-Android1",
-// 			"preLaunchTask": "Flutter-Launch-Android1",
-// 			"type": "dart",
-// 			"request": "launch"
-// 		},
-// 		{
-// 			"name": "Flutter-Android2",
-// 			"preLaunchTask": "Flutter-Launch-Android2",
-// 			"type": "dart",
-// 			"request": "launch"
-// 		},
-// 		{
-// 			"name": "Flutter-Android3",
-// 			"preLaunchTask": "Flutter-Launch-Android3",
-// 			"type": "dart",
-// 			"request": "launch"
-// 		}
-// 	]
-// }
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Flutter-All",
+			"preLaunchTask": "Flutter-Launch-All",
+			"type": "dart",
+			"request": "launch"
+		},
+		{
+			"name": "Flutter-Android1",
+			"preLaunchTask": "Flutter-Launch-Android1",
+			"type": "dart",
+			"request": "launch"
+		},
+		{
+			"name": "Flutter-Android2",
+			"preLaunchTask": "Flutter-Launch-Android2",
+			"type": "dart",
+			"request": "launch"
+		},
+		{
+			"name": "Flutter-Android3",
+			"preLaunchTask": "Flutter-Launch-Android3",
+			"type": "dart",
+			"request": "launch"
+		}
+	]
+}

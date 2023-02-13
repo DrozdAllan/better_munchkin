@@ -52,8 +52,7 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        height: 355.0,
-        width: 350,
+        height: MediaQuery.of(context).size.height / 2.20,
         padding: const EdgeInsets.all(8.0),
         child: Form(
           key: _formKey,

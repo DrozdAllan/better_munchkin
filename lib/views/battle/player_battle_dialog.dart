@@ -10,16 +10,18 @@ class PlayerBattleDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        height: 400.0,
+        height: MediaQuery.of(context).size.height / 1.75,
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Column(
           children: [
-            const Text('Select the player to battle'),
-            SizedBox(
-              height: 360,
+            const Text(
+              'Select the player to battle',
+              textAlign: TextAlign.center,
+            ),
+            Expanded(
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(
-                  Radius.elliptical(22.0, 15.0),
+                  Radius.elliptical(23.0, 14.8),
                 ),
                 child: BlocBuilder<PlayerCubit, List<Player>>(
                   builder: (context, state) {

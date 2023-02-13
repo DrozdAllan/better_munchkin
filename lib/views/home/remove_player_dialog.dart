@@ -13,16 +13,17 @@ class RemovePlayerDialog extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Column(
           children: [
-            const Text('Select the player to remove'),
-            SizedBox(
-              height: 338,
+            const Text('Select the player to remove',
+                textAlign: TextAlign.center),
+            Expanded(
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(
-                  Radius.elliptical(22.0, 15.0),
+                  Radius.elliptical(23.0, 14.8),
                 ),
                 child: BlocBuilder<PlayerCubit, List<Player>>(
                   builder: (context, state) {
                     return GridView.count(
+                      shrinkWrap: true,
                       padding: const EdgeInsets.only(top: 12.0),
                       childAspectRatio: 2,
                       crossAxisCount: 2,
@@ -45,6 +46,7 @@ class RemovePlayerDialog extends StatelessWidget {
                               child: Center(
                                 child: Text(
                                   player.name,
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                             ),

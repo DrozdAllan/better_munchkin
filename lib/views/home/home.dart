@@ -74,6 +74,7 @@ class Home extends StatelessWidget {
         child: PlayerList(),
       ),
       floatingActionButton: const BattleFab(),
+	  floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
     );
   }
 }

@@ -9,6 +9,7 @@ class BattleFab extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       mini: true,
+	  elevation: 0.0,
       onPressed: () {
         Navigator.of(context).push(
           MaterialPageRoute(

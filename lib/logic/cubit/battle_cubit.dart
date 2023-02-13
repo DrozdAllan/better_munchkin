@@ -21,6 +21,8 @@ class BattleSet {
   }
 }
 
+// TODO: computed state to show in player_battle_dialog.dart players - playerList
+
 class BattleCubit extends Cubit<BattleSet> {
   BattleCubit() : super(const BattleSet(playerList: [], monsterList: []));
 

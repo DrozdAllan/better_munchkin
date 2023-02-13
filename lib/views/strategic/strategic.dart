@@ -23,7 +23,7 @@ class _StrategicState extends State<Strategic> {
       body: BlocBuilder<PlayerCubit, List<Player>>(
         builder: (context, state) {
           return GridView.count(
-            childAspectRatio: landscape ? 2.5 : 2,
+            childAspectRatio: landscape ? 2.5 : 1.80,
             crossAxisCount: landscape ? 3 : 2,
             crossAxisSpacing: 2.0,
             mainAxisSpacing: 2.0,
