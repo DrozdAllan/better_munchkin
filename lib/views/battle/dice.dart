@@ -10,7 +10,7 @@ class DiceWidget extends StatefulWidget {
   State<DiceWidget> createState() => _DiceWidgetState();
 }
 
-class _DiceWidgetState extends State<DiceWidget> with TickerProviderStateMixin {
+class _DiceWidgetState extends State<DiceWidget> with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 750),

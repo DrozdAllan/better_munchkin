@@ -13,9 +13,6 @@ class Strategic extends StatefulWidget {
 class _StrategicState extends State<Strategic> {
   @override
   Widget build(BuildContext context) {
-    final landscape =
-        MediaQuery.of(context).size.height < MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Strategic View'),
@@ -23,8 +20,8 @@ class _StrategicState extends State<Strategic> {
       body: BlocBuilder<PlayerCubit, List<Player>>(
         builder: (context, state) {
           return GridView.count(
-            childAspectRatio: landscape ? 2.5 : 1.80,
-            crossAxisCount: landscape ? 3 : 2,
+            childAspectRatio: 1.80,
+            crossAxisCount: 2,
             crossAxisSpacing: 2.0,
             mainAxisSpacing: 2.0,
             children: [

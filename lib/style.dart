@@ -1,7 +1,7 @@
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const _headlineMediumSize = 30.0;
+const _headlineMediumSize = 28.0;
 const _titleMediumSize = 24.0;
 
 const Color _primaryColor = Color(0xFFc0cfff);

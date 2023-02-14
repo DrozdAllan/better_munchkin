@@ -7,9 +7,14 @@ import 'package:better_munchkin/views/battle/monster_battle_dialog.dart';
 import 'package:better_munchkin/views/battle/player_battle_dialog.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
-class Battle extends StatelessWidget {
+class Battle extends StatefulWidget {
   const Battle({super.key});
 
+  @override
+  State<Battle> createState() => _BattleState();
+}
+
+class _BattleState extends State<Battle> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +27,7 @@ class Battle extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: BlocBuilder<BattleCubit, BattleSet>(
                     builder: (context, state) {
-                  // instead of rendering directly the chips, create a list and add the button at the end of it
+                  // instead of rendering directly the chips, generate a List of Chips from the playerList and add an IconButton at the end
                   final List<Widget> chipsList = List.generate(
                     state.playerList.length,
                     (index) => PlayerChip(
@@ -56,7 +61,6 @@ class Battle extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: BlocBuilder<BattleCubit, BattleSet>(
                     builder: (context, state) {
-                  // instead of rendering directly the chips, create a list and add the button at the end of it
                   final List<Widget> chipsList = List.generate(
                     state.monsterList.length,
                     (index) => MonsterChip(
@@ -84,7 +88,6 @@ class Battle extends StatelessWidget {
         BlocBuilder<BattleCubit, BattleSet>(
           builder: (context, state) {
             if (state.isWinner == true) {
-              // TODO: add animation
               return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
@@ -99,7 +102,10 @@ class Battle extends StatelessWidget {
                     Icon(RpgAwesome.skull)
                   ]);
             } else {
-              return Container();
+              // height with logical pixels to avoid the alignment of the column making widgets move
+              return const SizedBox(
+                height: 34.0,
+              );
             }
           },
         ),

@@ -32,7 +32,7 @@ class _PlayerCardState extends State<PlayerCard> {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SizedBox(
                 height: 100.0,
