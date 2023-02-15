@@ -29,7 +29,6 @@ class _PlayerCardState extends State<PlayerCard> {
         children: [
           Text(
             widget.player.name,
-            style: Theme.of(context).textTheme.titleMedium,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -56,8 +55,9 @@ class _PlayerCardState extends State<PlayerCard> {
                                 .setLevel(widget.player.name, index + 1);
                           },
                           children: List.generate(state ? 19 : 9, (index) {
-                            return Text((index + 1).toString(),
-                                style: Theme.of(context).textTheme.bodyMedium);
+                            return Text(
+                              (index + 1).toString(),
+                            );
                           }, growable: false),
                         );
                       },
@@ -86,9 +86,9 @@ class _PlayerCardState extends State<PlayerCard> {
                       },
                       children: List.generate(30, (index) {
                         return Text(
-                            //   widget.player.bonus.toString(),
-                            index.toString(),
-                            style: Theme.of(context).textTheme.bodyMedium);
+                          //   widget.player.bonus.toString(),
+                          index.toString(),
+                        );
                       }, growable: false),
                     ),
                   ),
@@ -104,8 +104,9 @@ class _PlayerCardState extends State<PlayerCard> {
                   ),
                   Expanded(
                     child: Center(
-                      child: Text(widget.player.power.toString(),
-                          style: Theme.of(context).textTheme.bodyMedium),
+                      child: Text(
+                        widget.player.power.toString(),
+                      ),
                     ),
                   ),
                 ]),

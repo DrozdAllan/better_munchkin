@@ -12,7 +12,6 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(
-	// TODO: put providers down the tree when they're needed
     MultiBlocProvider(providers: [
       BlocProvider(create: (context) => IsEpicCubit()),
       BlocProvider(create: (context) => PlayerCubit()),
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // TODO: remove the line below
       debugShowCheckedModeBanner: false,
       theme: myLightTheme,
       darkTheme: myDarkTheme,

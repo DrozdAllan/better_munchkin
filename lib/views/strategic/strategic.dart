@@ -47,9 +47,9 @@ class _StrategicState extends State<Strategic> {
                                 RpgAwesome.corked_tube,
                               ),
                               // TODO: wrap with levelDialog()
-                              Text(player.level.toString(),
-                                  style:
-                                      Theme.of(context).textTheme.bodyMedium),
+                              Text(
+                                player.level.toString(),
+                              ),
                             ],
                           ),
                           Column(
@@ -59,9 +59,9 @@ class _StrategicState extends State<Strategic> {
                                 //   color: Colors.white
                               ),
                               // TODO: wrap with bonusDialog()
-                              Text(player.bonus.toString(),
-                                  style:
-                                      Theme.of(context).textTheme.bodyMedium),
+                              Text(
+                                player.bonus.toString(),
+                              ),
                             ],
                           ),
                           Column(
@@ -69,9 +69,9 @@ class _StrategicState extends State<Strategic> {
                               const Icon(
                                 RpgAwesome.targeted,
                               ),
-                              Text(player.power.toString(),
-                                  style:
-                                      Theme.of(context).textTheme.bodyMedium),
+                              Text(
+                                player.power.toString(),
+                              ),
                             ],
                           ),
                         ],

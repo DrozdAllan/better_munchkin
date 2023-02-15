@@ -11,7 +11,7 @@ class PlayerBattleDialog extends StatelessWidget {
     return Dialog(
       child: Container(
         height: MediaQuery.of(context).size.height / 1.75,
-        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+        padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0.0),
         child: Column(
           children: [
             const Text(
@@ -21,7 +21,7 @@ class PlayerBattleDialog extends StatelessWidget {
             Expanded(
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(
-                  Radius.elliptical(23.0, 14.8),
+                  Radius.elliptical(23.0, 11.0),
                 ),
                 child: BlocBuilder<PlayerCubit, List<Player>>(
                   builder: (context, state) {

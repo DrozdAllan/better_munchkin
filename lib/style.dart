@@ -1,8 +1,8 @@
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const _headlineMediumSize = 28.0;
-const _titleMediumSize = 24.0;
+const _appBarTitleSize = 28.0;
+const _bodyMediumSize = 24.0;
 
 const Color _primaryColor = Color(0xFFc0cfff);
 const Color _primaryDarkColor = Color(0xFF343952);
@@ -21,7 +21,7 @@ ThemeData myLightTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     centerTitle: true,
     titleTextStyle:
-        TextStyle(fontSize: _headlineMediumSize, color: _primaryDarkColor),
+        TextStyle(fontSize: _appBarTitleSize, color: _primaryDarkColor),
   ),
   bottomAppBarTheme: const BottomAppBarTheme(
       color: _primaryLightColor, height: 50.0, padding: EdgeInsets.all(0.0)),
@@ -31,10 +31,9 @@ ThemeData myLightTheme = ThemeData(
   ),
   textTheme: const TextTheme(
     // Player names on PlayerCard, AddPlayerDialog, RemovePlayerDialog, Strategic
-    titleMedium:
-        TextStyle(fontSize: _titleMediumSize, color: _primaryDarkColor),
+    titleMedium: TextStyle(color: _primaryDarkColor),
     // Numbers on PlayerCard & Strategic
-    bodyMedium: TextStyle(fontSize: _titleMediumSize, color: _primaryDarkColor),
+    bodyMedium: TextStyle(fontSize: _bodyMediumSize, color: _primaryDarkColor),
   ),
 );
 
@@ -42,7 +41,9 @@ ThemeData myDarkTheme = ThemeData(
   brightness: Brightness.dark,
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(
-      brightness: Brightness.dark, seedColor: _primaryColor),
+    brightness: Brightness.dark,
+    seedColor: _primaryColor,
+  ),
   fontFamily: GoogleFonts.saira().fontFamily,
   iconTheme: const IconThemeData(color: _primaryLightColor),
   dialogTheme: const DialogTheme(surfaceTintColor: _primaryDarkColor),
@@ -53,7 +54,7 @@ ThemeData myDarkTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     centerTitle: true,
     titleTextStyle:
-        TextStyle(fontSize: _headlineMediumSize, color: _primaryLightColor),
+        TextStyle(fontSize: _appBarTitleSize, color: _primaryLightColor),
   ),
   bottomAppBarTheme: const BottomAppBarTheme(
       color: _primaryDarkColor, height: 50.0, padding: EdgeInsets.all(0.0)),
@@ -63,10 +64,8 @@ ThemeData myDarkTheme = ThemeData(
   ),
   textTheme: const TextTheme(
     // Player names on PlayerCard, AddPlayerDialog, RemovePlayerDialog, Strategic
-    titleMedium:
-        TextStyle(fontSize: _titleMediumSize, color: _primaryLightColor),
+    titleMedium: TextStyle(color: _primaryLightColor),
     // Numbers on PlayerCard & Strategic
-    bodyMedium:
-        TextStyle(fontSize: _titleMediumSize, color: _primaryLightColor),
+    bodyMedium: TextStyle(fontSize: _bodyMediumSize, color: _primaryLightColor),
   ),
 );
