@@ -11,8 +11,14 @@ class AddPlayerDialog extends StatefulWidget {
 }
 
 class _AddPlayerDialogState extends State<AddPlayerDialog> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormFieldState> _formFieldKey = GlobalKey<FormFieldState>();
   final _name = TextEditingController();
+
+  @override
+  void dispose() {
+    _name.dispose();
+    super.dispose();
+  }
 
   List<Color> lightColors = const [
     Color(0xFFffbcaf),
@@ -37,75 +43,70 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
   ];
 
   @override
-  void dispose() {
-    _name.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Dialog(
-      child: Container(
-        height: MediaQuery.of(context).size.height / 2.45,
-        padding: const EdgeInsets.all(8.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              TextFormField(
-                textAlign: TextAlign.start,
-                controller: _name,
-                decoration: const InputDecoration(
-                    label: Center(child: Text('Name')),
-                    border: OutlineInputBorder()),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a name';
+    return SimpleDialog(
+      contentPadding: const EdgeInsets.all(8.0),
+      children: [
+        Column(
+          children: [
+            TextFormField(
+              key: _formFieldKey,
+              textAlign: TextAlign.start,
+              controller: _name,
+              decoration: const InputDecoration(
+                  label: Center(child: Text('Name')),
+                  border: OutlineInputBorder()),
+              validator: (value) {
+                // TODO: add rule, 15 caracters maximum
+                if (value == null || value.isEmpty) {
+                  return 'Please enter a name';
+                }
+                for (Player player in context.read<PlayerCubit>().state) {
+                  if (player.name == value.toTitleCase()) {
+                    return 'Name already taken';
                   }
-                  for (Player player in context.read<PlayerCubit>().state) {
-                    if (player.name == value.toTitleCase()) {
-                      return 'Name already taken';
-                    }
-                  }
-                  return null;
+                }
+                return null;
+              },
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 4.75,
+              width: MediaQuery.of(context).size.width,
+              // TODO: I dont think gridview is the right widget if you dont want to scroll
+              child: GridView.builder(
+                padding: const EdgeInsets.only(top: 8.0),
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: lightColors.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  mainAxisSpacing: 5.0,
+                  crossAxisSpacing: 5.0,
+                ),
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      if (_formFieldKey.currentState!.validate()) {
+                        context.read<PlayerCubit>().addPlayer(Player(
+                            name: _name.text.toTitleCase(),
+                            colorId: lightColors.elementAt(index).value,
+                            level: 1,
+                            bonus: 0,
+                            power: 1));
+                        Navigator.pop(context);
+                      }
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: lightColors.elementAt(index),
+                          shape: BoxShape.circle),
+                    ),
+                  );
                 },
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 4.4,
-                child: GridView.builder(
-                  itemCount: lightColors.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    mainAxisSpacing: 5.0,
-                    crossAxisSpacing: 5.0,
-                  ),
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          context.read<PlayerCubit>().addPlayer(Player(
-                              name: _name.text.toTitleCase(),
-                              colorId: lightColors.elementAt(index).value,
-                              level: 1,
-                              bonus: 0,
-                              power: 1));
-                          Navigator.pop(context);
-                        }
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: lightColors.elementAt(index),
-                            shape: BoxShape.circle),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
+      ],
     );
   }
 }

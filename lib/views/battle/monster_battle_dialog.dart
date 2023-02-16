@@ -13,17 +13,15 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      child: Container(
-        height: MediaQuery.of(context).size.height / 2.45,
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
+    return SimpleDialog(
+      title: const Text(
+        'Monster\'s Power',
+        textAlign: TextAlign.center,
+      ),
+      children: [
+        Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Text(
-              'Monster\'s power',
-              textAlign: TextAlign.center,
-            ),
             SizedBox(
               height: MediaQuery.of(context).size.height / 4.4,
               child: ListWheelScrollView(
@@ -50,11 +48,14 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
                 context.read<BattleCubit>().addMonster(_monsterPower);
                 Navigator.pop(context);
               },
-              child: const Text('Add Monster'),
+              child: const Text(
+                'Add Monster',
+                style: TextStyle(fontSize: 20.0),
+              ),
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

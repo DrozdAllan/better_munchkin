@@ -1,5 +1,5 @@
 import 'package:better_munchkin/logic/cubit/is_epic_cubit.dart';
-import 'package:better_munchkin/utils/battle_fab.dart';
+import 'package:better_munchkin/views/battle/battle.dart';
 import 'package:better_munchkin/views/home/player_list.dart';
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:better_munchkin/views/strategic/strategic.dart';
@@ -70,11 +70,23 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
-      body: const SingleChildScrollView(
-        child: PlayerList(),
+      body: const PlayerList(),
+      floatingActionButton: FloatingActionButton(
+        mini: true,
+        elevation: 0.0,
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const Battle(),
+            ),
+          );
+        },
+        child: const Icon(
+          RpgAwesome.crossed_axes,
+          size: 28.0,
+        ),
       ),
-      floatingActionButton: const BattleFab(),
-	  floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
     );
   }
 }

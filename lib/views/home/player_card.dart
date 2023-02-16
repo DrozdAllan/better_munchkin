@@ -24,7 +24,7 @@ class _PlayerCardState extends State<PlayerCard> {
         color: Color(widget.player.colorId),
       ),
       height: 150.0,
-      margin: const EdgeInsets.all(3.0),
+      margin: const EdgeInsets.fromLTRB(3, 0, 3, 3),
       child: Column(
         children: [
           Text(
