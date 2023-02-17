@@ -57,9 +57,11 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
                   label: Center(child: Text('Name')),
                   border: OutlineInputBorder()),
               validator: (value) {
-                // TODO: add rule, 15 caracters maximum
                 if (value == null || value.isEmpty) {
                   return 'Please enter a name';
+                }
+                if (value.length > 15) {
+                  return '15 caracters maximum';
                 }
                 for (Player player in context.read<PlayerCubit>().state) {
                   if (player.name == value.toTitleCase()) {

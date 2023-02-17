@@ -8,6 +8,7 @@ class PlayerBattleDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: refactor remove_player_dialog & player_battle_dialog
     return SimpleDialog(
         contentPadding: const EdgeInsets.only(top: 12.0),
         title: const Text(

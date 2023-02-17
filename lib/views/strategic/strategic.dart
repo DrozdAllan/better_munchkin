@@ -3,14 +3,9 @@ import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:fluttericon/rpg_awesome_icons.dart';
 
-class Strategic extends StatefulWidget {
+class Strategic extends StatelessWidget {
   const Strategic({super.key});
 
-  @override
-  State<Strategic> createState() => _StrategicState();
-}
-
-class _StrategicState extends State<Strategic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

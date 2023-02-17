@@ -12,6 +12,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+	// TODO: package icons before build
     return Scaffold(
       appBar: AppBar(
         title: const Text('Better Munchkin'),

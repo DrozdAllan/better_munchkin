@@ -10,18 +10,22 @@ class DiceWidget extends StatefulWidget {
   State<DiceWidget> createState() => _DiceWidgetState();
 }
 
-class _DiceWidgetState extends State<DiceWidget> with SingleTickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 750),
-  );
-  late final Animation<double> _animation = CurvedAnimation(
-    parent: _controller,
-    curve: Curves.easeOutCubic,
-  );
+class _DiceWidgetState extends State<DiceWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
   bool isInit = false;
   List<int> diceIcons = const [59799, 59802, 59801, 59798, 59797, 59800];
   late Icon resultDice;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 750),
+    );
+  }
 
   @override
   void dispose() {
@@ -41,7 +45,10 @@ class _DiceWidgetState extends State<DiceWidget> with SingleTickerProviderStateM
                 size: 52.0,
               )
             : RotationTransition(
-                turns: _animation,
+                turns: CurvedAnimation(
+                  parent: _controller,
+                  curve: Curves.easeOutCubic,
+                ),
                 child: resultDice,
               ),
       ),

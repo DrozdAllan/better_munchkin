@@ -8,14 +8,9 @@ import 'package:fluttericon/rpg_awesome_icons.dart';
 import 'monster_chip.dart';
 import 'player_chip.dart';
 
-class Battle extends StatefulWidget {
+class Battle extends StatelessWidget {
   const Battle({super.key});
 
-  @override
-  State<Battle> createState() => _BattleState();
-}
-
-class _BattleState extends State<Battle> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
