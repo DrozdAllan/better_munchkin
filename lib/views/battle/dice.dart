@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:better_munchkin/utils/commons.dart';
-import 'package:fluttericon/rpg_awesome_icons.dart';
+import 'package:rive/rive.dart';
 
 class DiceWidget extends StatefulWidget {
   const DiceWidget({super.key});
@@ -10,69 +10,44 @@ class DiceWidget extends StatefulWidget {
   State<DiceWidget> createState() => _DiceWidgetState();
 }
 
-class _DiceWidgetState extends State<DiceWidget>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
+class _DiceWidgetState extends State<DiceWidget> {
+  SMITrigger? _onTap;
+  SMIInput<double>? _diceResult;
 
-  bool isInit = false;
-  List<int> diceIcons = const [59799, 59802, 59801, 59798, 59797, 59800];
-  late Icon resultDice;
+  void _onRiveInit(Artboard artboard) {
+    final controller =
+        StateMachineController.fromArtboard(artboard, 'State Machine 1');
+    artboard.addController(controller!);
 
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 750),
-    );
+    _onTap = controller.findInput<bool>('onTap') as SMITrigger;
+    _diceResult = controller.findInput<double>('Result') as SMINumber;
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  void _userTap() => _onTap?.fire();
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 75.0,
+      width: 75,
+      height: 75,
       child: GestureDetector(
-        onTap: () => diceRoll(),
-        child: isInit == false
-            ? const Icon(
-                RpgAwesome.perspective_dice_six_two,
-                size: 52.0,
-              )
-            : RotationTransition(
-                turns: CurvedAnimation(
-                  parent: _controller,
-                  curve: Curves.easeOutCubic,
-                ),
-                child: resultDice,
-              ),
+        onTap: diceRoll,
+        child: RiveAnimation.asset(
+          'assets/dice.riv',
+          fit: BoxFit.cover,
+          onInit: _onRiveInit,
+        ),
       ),
     );
   }
 
   void diceRoll() {
-    // random from 0 to 5 because I use diceIcons index
-    int diceResult = Random().nextInt(6);
-    if (isInit == false) {
-      setState(() {
-        isInit = true;
-      });
-    }
+    _userTap();
+
+    double diceResult = (Random().nextInt(6) + 1).toDouble();
 
     setState(() {
-      resultDice = Icon(
-        IconData(diceIcons.elementAt(diceResult),
-            fontFamily: "RpgAwesome", fontPackage: "fluttericon"),
-        size: 48.0,
-      );
+      _diceResult!.value = diceResult;
     });
-
-    _controller.reset();
-    _controller.forward();
   }
 }
