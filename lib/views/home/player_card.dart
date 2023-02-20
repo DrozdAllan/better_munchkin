@@ -2,7 +2,6 @@ import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/is_epic_cubit.dart';
 import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
-import 'package:fluttericon/rpg_awesome_icons.dart';
 
 class PlayerCard extends StatefulWidget {
   const PlayerCard({super.key, required this.player});
@@ -38,7 +37,7 @@ class _PlayerCardState extends State<PlayerCard> {
                 width: 100.0,
                 child: Row(children: [
                   Icon(
-                    RpgAwesome.corked_tube,
+                    CustomIcons.corkedTube,
                     size: _iconSize,
                   ),
                   Expanded(
@@ -70,7 +69,7 @@ class _PlayerCardState extends State<PlayerCard> {
                 width: 100.0,
                 child: Row(children: [
                   Icon(
-                    RpgAwesome.large_hammer,
+                    CustomIcons.largeHammer,
                     size: _iconSize,
                   ),
                   Expanded(
@@ -99,7 +98,7 @@ class _PlayerCardState extends State<PlayerCard> {
                 width: 100.0,
                 child: Row(children: [
                   Icon(
-                    RpgAwesome.targeted,
+                    CustomIcons.targeted,
                     size: _iconSize,
                   ),
                   Expanded(

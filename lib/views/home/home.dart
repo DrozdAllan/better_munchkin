@@ -1,18 +1,16 @@
 import 'package:better_munchkin/logic/cubit/is_epic_cubit.dart';
+import 'package:better_munchkin/utils/custom_dialog.dart';
 import 'package:better_munchkin/views/battle/battle.dart';
 import 'package:better_munchkin/views/home/player_list.dart';
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:better_munchkin/views/strategic/strategic.dart';
 import 'add_player_dialog.dart';
-import 'remove_player_dialog.dart';
-import 'package:fluttericon/rpg_awesome_icons.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-	// TODO: package icons before build
     return Scaffold(
       appBar: AppBar(
         title: const Text('Better Munchkin'),
@@ -20,8 +18,8 @@ class Home extends StatelessWidget {
           builder: (context, state) {
             return IconButton(
               icon: state
-                  ? const Icon(RpgAwesome.wyvern)
-                  : const Icon(RpgAwesome.gecko),
+                  ? const Icon(CustomIcons.wyvern)
+                  : const Icon(CustomIcons.gecko),
               onPressed: () {
                 ScaffoldMessenger.of(context).clearSnackBars();
                 context.read<IsEpicCubit>().swap();
@@ -39,7 +37,7 @@ class Home extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(RpgAwesome.circle_of_circles),
+            icon: const Icon(CustomIcons.circleOfCircles),
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -64,7 +62,7 @@ class Home extends StatelessWidget {
             TextButton(
               onPressed: () => showDialog(
                 context: context,
-                builder: (context) => const RemovePlayerDialog(),
+                builder: (context) => const CustomDialog(dialogType: false),
               ),
               child: const Text('Remove Player'),
             ),
@@ -83,7 +81,7 @@ class Home extends StatelessWidget {
           );
         },
         child: const Icon(
-          RpgAwesome.crossed_axes,
+          CustomIcons.crossedAxes,
           size: 28.0,
         ),
       ),

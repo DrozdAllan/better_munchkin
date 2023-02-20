@@ -1,17 +1,22 @@
-import 'package:better_munchkin/data/models/player.dart';
-import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 
-class RemovePlayerDialog extends StatelessWidget {
-  const RemovePlayerDialog({super.key});
+import 'package:better_munchkin/data/models/player.dart';
+import 'package:better_munchkin/logic/cubit/player_cubit.dart';
+import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
+
+class CustomDialog extends StatelessWidget {
+  final bool dialogType;
+
+  const CustomDialog({super.key, required this.dialogType});
 
   @override
   Widget build(BuildContext context) {
-	// TODO: refactor remove_player_dialog & player_battle_dialog
     return SimpleDialog(
       contentPadding: const EdgeInsets.only(top: 12.0),
-      title: const Text(
-        'Select the player to remove',
+      title: Text(
+        dialogType
+            ? 'Select the player to battle'
+            : 'Select the player to remove',
         textAlign: TextAlign.center,
       ),
       children: [
@@ -34,7 +39,11 @@ class RemovePlayerDialog extends StatelessWidget {
                   for (Player player in state)
                     GestureDetector(
                       onTap: () {
-                        context.read<PlayerCubit>().removePlayer(player.name);
+                        dialogType
+                            ? context.read<BattleCubit>().addPlayer(player)
+                            : context
+                                .read<PlayerCubit>()
+                                .removePlayer(player.name);
                         Navigator.pop(context);
                       },
                       child: Container(

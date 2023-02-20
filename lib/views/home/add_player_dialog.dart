@@ -23,27 +23,31 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
   List<Color> lightColors = const [
     Color(0xFFffbcaf),
     Color(0xFFffb2ff),
-    Color(0xFFc0cfff),
-    Color(0xFF8EDBCE),
-    Color(0xFFe1ffb1),
-    Color(0xFFb5ffff),
     Color(0xFFffffb1),
     Color(0xFFFFDE9C),
+    Color(0xFFb5ffff),
+    Color(0xFFc0cfff),
+    Color(0xFFe1ffb1),
+    Color(0xFF8EDBCE),
   ];
 
   List<Color> darkColors = const [
-    Color(0xFFc62828),
-    Color(0xFF6a1b9a),
-    Color(0xFF283593),
-    Color(0xFF0277bd),
-    Color(0xFF00695c),
-    Color(0xFF558b2f),
-    Color(0xFFff8f00),
     Color(0xFFef6c00),
+    Color(0xFF6a1b9a),
+    Color(0xFFc62828),
+    Color(0xFF9f0000),
+    Color(0xFF0277bd),
+    Color(0xFF283593),
+    Color(0xFF558b2f),
+    Color(0xFF00695c),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final List<Color> chosenPalette =
+        Theme.of(context).brightness == Brightness.light
+            ? lightColors
+            : darkColors;
     return SimpleDialog(
       contentPadding: const EdgeInsets.all(8.0),
       children: [
@@ -74,36 +78,32 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
             SizedBox(
               height: MediaQuery.of(context).size.height / 4.75,
               width: MediaQuery.of(context).size.width,
-              // TODO: I dont think gridview is the right widget if you dont want to scroll
-              child: GridView.builder(
+              child: GridView.count(
                 padding: const EdgeInsets.only(top: 8.0),
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: lightColors.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  mainAxisSpacing: 5.0,
-                  crossAxisSpacing: 5.0,
-                ),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      if (_formFieldKey.currentState!.validate()) {
-                        context.read<PlayerCubit>().addPlayer(Player(
-                            name: _name.text.toTitleCase(),
-                            colorId: lightColors.elementAt(index).value,
-                            level: 1,
-                            bonus: 0,
-                            power: 1));
-                        Navigator.pop(context);
-                      }
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: lightColors.elementAt(index),
-                          shape: BoxShape.circle),
-                    ),
-                  );
-                },
+                crossAxisCount: 4,
+                mainAxisSpacing: 5.0,
+                crossAxisSpacing: 5.0,
+                children: [
+                  for (Color color in chosenPalette)
+                    GestureDetector(
+                      onTap: () {
+                        if (_formFieldKey.currentState!.validate()) {
+                          context.read<PlayerCubit>().addPlayer(Player(
+                              name: _name.text.toTitleCase(),
+                              colorId: color.value,
+                              level: 1,
+                              bonus: 0,
+                              power: 1));
+                          Navigator.pop(context);
+                        }
+                      },
+                      child: Container(
+                        decoration:
+                            BoxDecoration(color: color, shape: BoxShape.circle),
+                      ),
+                    )
+                ],
               ),
             ),
           ],

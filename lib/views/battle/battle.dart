@@ -1,9 +1,8 @@
 import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
+import 'package:better_munchkin/utils/custom_dialog.dart';
 import 'package:better_munchkin/views/battle/dice.dart';
 import 'package:better_munchkin/views/battle/monster_battle_dialog.dart';
-import 'package:better_munchkin/views/battle/player_battle_dialog.dart';
-import 'package:fluttericon/rpg_awesome_icons.dart';
 
 import 'monster_chip.dart';
 import 'player_chip.dart';
@@ -16,7 +15,7 @@ class Battle extends StatelessWidget {
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
         Column(children: [
-          const Icon(RpgAwesome.knight_helmet, size: 52.0),
+          const Icon(CustomIcons.knightHelmet, size: 52.0),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -34,9 +33,10 @@ class Battle extends StatelessWidget {
                   IconButton(
                     onPressed: () => showDialog(
                       context: context,
-                      builder: (context) => const PlayerBattleDialog(),
+                      builder: (context) =>
+                          const CustomDialog(dialogType: true),
                     ),
-                    icon: const Icon(RpgAwesome.hospital_cross),
+                    icon: const Icon(CustomIcons.hospitalCross),
                   ),
                 );
                 return Wrap(
@@ -48,7 +48,7 @@ class Battle extends StatelessWidget {
           ]),
         ]),
         Column(children: [
-          const Icon(RpgAwesome.monster_skull, size: 52.0),
+          const Icon(CustomIcons.monsterSkull, size: 52.0),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -66,7 +66,7 @@ class Battle extends StatelessWidget {
                       context: context,
                       builder: (context) => const MonsterBattleDialog(),
                     ),
-                    icon: const Icon(RpgAwesome.hospital_cross),
+                    icon: const Icon(CustomIcons.hospitalCross),
                   ),
                 );
                 return Wrap(
@@ -84,14 +84,14 @@ class Battle extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     Text('PLAYERS WIN '),
-                    Icon(RpgAwesome.horn_call),
+                    Icon(CustomIcons.hornCall),
                   ]);
             } else if (state.isWinner == false) {
               return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     Text('PLAYERS LOOSE '),
-                    Icon(RpgAwesome.skull)
+                    Icon(CustomIcons.skull)
                   ]);
             } else {
               // height with fixed height to avoid the alignment of the column making widgets move

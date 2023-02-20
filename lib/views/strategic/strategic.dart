@@ -1,7 +1,6 @@
 import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
-import 'package:fluttericon/rpg_awesome_icons.dart';
 
 class Strategic extends StatelessWidget {
   const Strategic({super.key});
@@ -39,7 +38,7 @@ class Strategic extends StatelessWidget {
                           Column(
                             children: [
                               const Icon(
-                                RpgAwesome.corked_tube,
+                                CustomIcons.corkedTube,
                               ),
                               // TODO: wrap with levelDialog()
                               Text(
@@ -50,7 +49,7 @@ class Strategic extends StatelessWidget {
                           Column(
                             children: [
                               const Icon(
-                                RpgAwesome.large_hammer,
+                                CustomIcons.largeHammer,
                                 //   color: Colors.white
                               ),
                               // TODO: wrap with bonusDialog()
@@ -62,7 +61,7 @@ class Strategic extends StatelessWidget {
                           Column(
                             children: [
                               const Icon(
-                                RpgAwesome.targeted,
+                                CustomIcons.targeted,
                               ),
                               Text(
                                 player.power.toString(),

@@ -1,6 +1,5 @@
 import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
-import 'package:fluttericon/rpg_awesome_icons.dart';
 
 class MonsterChip extends StatelessWidget {
   final int index;
@@ -13,7 +12,7 @@ class MonsterChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 2.0),
       child: Chip(
         label: Text('Monster ${index + 1} (${power.toString()})'),
-        deleteIcon: const Icon(RpgAwesome.crossed_bones, size: 16.0),
+        deleteIcon: const Icon(CustomIcons.crossedBones, size: 16.0),
         onDeleted: () {
           context.read<BattleCubit>().removeMonster(index);
         },
