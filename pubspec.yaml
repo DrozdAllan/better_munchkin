@@ -32,9 +32,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_colorpicker: ^1.0.3
   google_fonts: ^3.0.1
@@ -44,29 +41,26 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.2.18
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   assets:
     - assets/dice.riv
+    - assets/diceDark.riv
 
   fonts:
     - family:  CustomIcons
       fonts:
       - asset: assets/CustomIcons.ttf
+
+flutter_native_splash:
+  # background color of the splash screen, choose something accordingly to your logo, only color is mandatory
+  color: "#C0CFFF"
+
+  # if you want to add an image (logo in the center), it must be png
+  image: assets/SplashLogo.png

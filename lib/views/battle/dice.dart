@@ -27,13 +27,16 @@ class _DiceWidgetState extends State<DiceWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var diceAsset = Theme.of(context).brightness == Brightness.light
+        ? 'assets/dice.riv'
+        : 'assets/diceDark.riv';
     return SizedBox(
       width: 75,
       height: 75,
       child: GestureDetector(
         onTap: diceRoll,
         child: RiveAnimation.asset(
-          'assets/dice.riv',
+          diceAsset,
           fit: BoxFit.cover,
           onInit: _onRiveInit,
         ),
