@@ -38,6 +38,18 @@ class BattleCubit extends Cubit<BattleSet> {
     }
   }
 
+  void modifyPlayer(Player player, int playerPower) {
+    final newPlayerList = [
+      for (final oldPlayer in state.playerList)
+        if (oldPlayer.name == player.name)
+          oldPlayer.copyWith(power: playerPower)
+        else
+          oldPlayer,
+    ];
+    emit(state.copyWith(playerList: newPlayerList));
+    calculateScore();
+  }
+
   void removePlayer(String playerName) {
     final newPlayerList = state.playerList;
     newPlayerList.removeWhere((element) => element.name == playerName);

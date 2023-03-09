@@ -1,21 +1,29 @@
+import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 
-class MonsterBattleDialog extends StatefulWidget {
-  const MonsterBattleDialog({super.key});
+class ModifyPlayerDialog extends StatefulWidget {
+  final Player player;
+  const ModifyPlayerDialog({super.key, required this.player});
 
   @override
-  State<MonsterBattleDialog> createState() => _MonsterBattleDialogState();
+  State<ModifyPlayerDialog> createState() => _ModifyPlayerDialogState();
 }
 
-class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
-  int _monsterPower = 1;
+class _ModifyPlayerDialogState extends State<ModifyPlayerDialog> {
+  late int _playerPower;
+
+  @override
+  void initState() {
+    super.initState();
+    _playerPower = widget.player.power;
+  }
 
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: const Text(
-        'Monster\'s Power',
+      title: Text(
+        '${widget.player.name}\'s Power',
         textAlign: TextAlign.center,
       ),
       children: [
@@ -25,17 +33,19 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
             SizedBox(
               height: MediaQuery.of(context).size.height / 4.4,
               child: ListWheelScrollView(
+                physics: const FixedExtentScrollPhysics(),
+                controller:
+                    FixedExtentScrollController(initialItem: _playerPower),
                 itemExtent: 52,
                 diameterRatio: 1.2,
                 useMagnifier: true,
                 magnification: 1.6,
-                onSelectedItemChanged: (index) {
-                  _monsterPower = index + 1;
+                onSelectedItemChanged: (initialItem) {
+                  _playerPower = initialItem;
                 },
-                children: List.generate(20, (index) {
+                children: List.generate(40, (initialItem) {
                   return Text(
-                    (index + 1).toString(),
-                    //   widget.player.level.toString(),
+                    (initialItem).toString(),
                     style: const TextStyle(
                       fontSize: 38.0,
                     ),
@@ -45,11 +55,13 @@ class _MonsterBattleDialogState extends State<MonsterBattleDialog> {
             ),
             TextButton(
               onPressed: () {
-                context.read<BattleCubit>().addMonster(_monsterPower);
+                context
+                    .read<BattleCubit>()
+                    .modifyPlayer(widget.player, _playerPower);
                 Navigator.pop(context);
               },
               child: const Text(
-                'Add Monster',
+                'Modify Power',
                 style: TextStyle(fontSize: 20.0),
               ),
             ),

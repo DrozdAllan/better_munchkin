@@ -27,6 +27,7 @@ class _DiceWidgetState extends State<DiceWidget> {
 
   @override
   Widget build(BuildContext context) {
+	// TODO: change dice anim
     var diceAsset = Theme.of(context).brightness == Brightness.light
         ? 'assets/dice.riv'
         : 'assets/diceDark.riv';

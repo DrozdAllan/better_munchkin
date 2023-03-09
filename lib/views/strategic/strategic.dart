@@ -1,6 +1,7 @@
 import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
+import 'package:better_munchkin/utils/stat_dialog.dart';
 
 class Strategic extends StatelessWidget {
   const Strategic({super.key});
@@ -35,28 +36,40 @@ class Strategic extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Column(
-                            children: [
-                              const Icon(
-                                CustomIcons.corkedTube,
-                              ),
-                              // TODO: wrap with levelDialog()
-                              Text(
-                                player.level.toString(),
-                              ),
-                            ],
+                          GestureDetector(
+                            onTap: () => showDialog(
+                              context: context,
+                              builder: (context) =>
+                                  const StatDialog(type: DialogType.level),
+                            ),
+                            child: Column(
+                              children: [
+                                const Icon(
+                                  CustomIcons.corkedTube,
+                                ),
+                                Text(
+                                  player.level.toString(),
+                                ),
+                              ],
+                            ),
                           ),
-                          Column(
-                            children: [
-                              const Icon(
-                                CustomIcons.largeHammer,
-                                //   color: Colors.white
-                              ),
-                              // TODO: wrap with bonusDialog()
-                              Text(
-                                player.bonus.toString(),
-                              ),
-                            ],
+                          GestureDetector(
+                            onTap: () => showDialog(
+                              context: context,
+                              builder: (context) =>
+                                  const StatDialog(type: DialogType.bonus),
+                            ),
+                            child: Column(
+                              children: [
+                                const Icon(
+                                  CustomIcons.largeHammer,
+                                  //   color: Colors.white
+                                ),
+                                Text(
+                                  player.bonus.toString(),
+                                ),
+                              ],
+                            ),
                           ),
                           Column(
                             children: [

@@ -44,6 +44,7 @@ class _PlayerCardState extends State<PlayerCard> {
                     child: BlocBuilder<IsEpicCubit, bool>(
                       builder: (context, state) {
                         return ListWheelScrollView(
+                          physics: const FixedExtentScrollPhysics(),
                           itemExtent: 42,
                           diameterRatio: 1.2,
                           onSelectedItemChanged: (index) {
@@ -74,10 +75,9 @@ class _PlayerCardState extends State<PlayerCard> {
                   ),
                   Expanded(
                     child: ListWheelScrollView(
+                      physics: const FixedExtentScrollPhysics(),
                       itemExtent: 42,
                       diameterRatio: 1.2,
-                      //   useMagnifier: true,
-                      //   magnification: 1.2,
                       onSelectedItemChanged: (index) {
                         context
                             .read<PlayerCubit>()
@@ -85,7 +85,6 @@ class _PlayerCardState extends State<PlayerCard> {
                       },
                       children: List.generate(30, (index) {
                         return Text(
-                          //   widget.player.bonus.toString(),
                           index.toString(),
                         );
                       }, growable: false),

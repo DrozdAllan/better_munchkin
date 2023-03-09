@@ -1,8 +1,8 @@
 import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:better_munchkin/utils/custom_dialog.dart';
+import 'package:better_munchkin/utils/stat_dialog.dart';
 import 'package:better_munchkin/views/battle/dice.dart';
-import 'package:better_munchkin/views/battle/monster_battle_dialog.dart';
 
 import 'monster_chip.dart';
 import 'player_chip.dart';
@@ -24,10 +24,8 @@ class Battle extends StatelessWidget {
                 // instead of rendering directly the chips, generate a List of Chips from the playerList and add an IconButton at the end
                 final List<Widget> chipsList = List.generate(
                   state.playerList.length,
-                  (index) => PlayerChip(
-                      name: state.playerList.elementAt(index).name,
-                      colorId: state.playerList.elementAt(index).colorId,
-                      power: state.playerList.elementAt(index).power),
+                  (index) =>
+                      PlayerChip(player: state.playerList.elementAt(index)),
                 );
                 chipsList.add(
                   IconButton(
@@ -64,7 +62,8 @@ class Battle extends StatelessWidget {
                   IconButton(
                     onPressed: () => showDialog(
                       context: context,
-                      builder: (context) => const MonsterBattleDialog(),
+                      builder: (context) =>
+                          const StatDialog(type: DialogType.monster),
                     ),
                     icon: const Icon(CustomIcons.hospitalCross),
                   ),
