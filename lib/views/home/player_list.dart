@@ -10,6 +10,7 @@ class PlayerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PlayerCubit, List<Player>>(
+      // TODO: need to rebuild when going back from Strategic View https://stackoverflow.com/questions/49804891/force-flutter-navigator-to-reload-state-when-popping
       builder: (context, state) {
         return ListView.builder(
           itemCount: state.length,

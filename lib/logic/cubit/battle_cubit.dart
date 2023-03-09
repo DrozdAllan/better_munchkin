@@ -38,10 +38,10 @@ class BattleCubit extends Cubit<BattleSet> {
     }
   }
 
-  void modifyPlayer(Player player, int playerPower) {
+  void modifyPlayer(String playerName, int playerPower) {
     final newPlayerList = [
       for (final oldPlayer in state.playerList)
-        if (oldPlayer.name == player.name)
+        if (oldPlayer.name == playerName)
           oldPlayer.copyWith(power: playerPower)
         else
           oldPlayer,

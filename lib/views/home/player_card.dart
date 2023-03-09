@@ -4,9 +4,9 @@ import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 
 class PlayerCard extends StatefulWidget {
-  const PlayerCard({super.key, required this.player});
-
   final Player player;
+
+  const PlayerCard({super.key, required this.player});
 
   @override
   State<PlayerCard> createState() => _PlayerCardState();
@@ -44,9 +44,11 @@ class _PlayerCardState extends State<PlayerCard> {
                     child: BlocBuilder<IsEpicCubit, bool>(
                       builder: (context, state) {
                         return ListWheelScrollView(
-                          physics: const FixedExtentScrollPhysics(),
                           itemExtent: 42,
                           diameterRatio: 1.2,
+                          physics: const FixedExtentScrollPhysics(),
+                          controller: FixedExtentScrollController(
+                              initialItem: widget.player.level - 1),
                           onSelectedItemChanged: (index) {
                             // Note : it starts with index 0 but the minimum level is 1
                             // so it's always index + 1
@@ -75,9 +77,11 @@ class _PlayerCardState extends State<PlayerCard> {
                   ),
                   Expanded(
                     child: ListWheelScrollView(
-                      physics: const FixedExtentScrollPhysics(),
                       itemExtent: 42,
                       diameterRatio: 1.2,
+                      physics: const FixedExtentScrollPhysics(),
+                      controller: FixedExtentScrollController(
+                          initialItem: widget.player.bonus - 1),
                       onSelectedItemChanged: (index) {
                         context
                             .read<PlayerCubit>()

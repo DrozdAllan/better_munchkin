@@ -39,8 +39,8 @@ class Strategic extends StatelessWidget {
                           GestureDetector(
                             onTap: () => showDialog(
                               context: context,
-                              builder: (context) =>
-                                  const StatDialog(type: DialogType.level),
+                              builder: (context) => StatDialog(
+                                  type: DialogType.level, player: player),
                             ),
                             child: Column(
                               children: [
@@ -56,8 +56,8 @@ class Strategic extends StatelessWidget {
                           GestureDetector(
                             onTap: () => showDialog(
                               context: context,
-                              builder: (context) =>
-                                  const StatDialog(type: DialogType.bonus),
+                              builder: (context) => StatDialog(
+                                  type: DialogType.bonus, player: player),
                             ),
                             child: Column(
                               children: [

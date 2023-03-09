@@ -1,7 +1,7 @@
 import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
-import 'package:better_munchkin/views/battle/modify_player_dialog.dart';
+import 'package:better_munchkin/utils/stat_dialog.dart';
 
 class PlayerChip extends StatelessWidget {
   final Player player;
@@ -15,7 +15,8 @@ class PlayerChip extends StatelessWidget {
         onTap: () {
           showDialog(
             context: context,
-            builder: (context) => ModifyPlayerDialog(player: player),
+            builder: (context) =>
+                StatDialog(type: DialogType.battlePower, player: player),
           );
         },
         child: Chip(
