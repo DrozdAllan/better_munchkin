@@ -1,5 +1,6 @@
 import 'package:better_munchkin/data/models/player.dart';
 import 'package:better_munchkin/logic/cubit/battle_cubit.dart';
+import 'package:better_munchkin/logic/cubit/is_epic_cubit.dart';
 import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 
@@ -25,6 +26,7 @@ class _StatDialogState extends State<StatDialog> {
   @override
   void initState() {
     super.initState();
+
     switch (widget.type) {
       case DialogType.monster:
         _baseIndex = 0;
@@ -36,10 +38,8 @@ class _StatDialogState extends State<StatDialog> {
         break;
       case DialogType.level:
         _baseIndex = widget.player!.level;
-        // TODO: depends on game mode
-        _listLength = 30;
         _dialogTitle = "${widget.player!.name}'s Level";
-        _buttonTitle = "Modify Power";
+        _buttonTitle = "Modify Level";
         _buttonFunction = () => context
             .read<PlayerCubit>()
             .setLevel(widget.player!.name, _baseIndex + 1);
@@ -51,7 +51,7 @@ class _StatDialogState extends State<StatDialog> {
         _buttonTitle = "Modify Bonus";
         _buttonFunction = () => context
             .read<PlayerCubit>()
-            .setBonus(widget.player!.name, _baseIndex + 1);
+            .setBonus(widget.player!.name, _baseIndex);
         break;
       case DialogType.battlePower:
         _baseIndex = widget.player!.power;
@@ -78,30 +78,37 @@ class _StatDialogState extends State<StatDialog> {
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height / 4.4,
-              child: ListWheelScrollView(
-                itemExtent: 52,
-                diameterRatio: 1.2,
-                useMagnifier: true,
-                magnification: 1.6,
-                physics: const FixedExtentScrollPhysics(),
-                controller:
-                    FixedExtentScrollController(initialItem: _baseIndex - 1),
-                onSelectedItemChanged: (index) {
-                  // Note : it starts with index 0 but the minimum level is 1
-                  // so it's always index + 1
-                  _baseIndex = index;
-                  //   context
-                  //   .read<PlayerCubit>()
-                  //   .setLevel(widget.player.name, index + 1);
-                },
-                children: List.generate(_listLength, (index) {
-                  return Text(
-                    (index + 1).toString(),
-                    style: const TextStyle(
-                      fontSize: 38.0,
-                    ),
+              child: BlocBuilder<IsEpicCubit, bool>(
+                builder: (context, state) {
+                  if (widget.type == DialogType.level && state == true) {
+                    _listLength = 19;
+                  } else if (widget.type == DialogType.level &&
+                      state == false) {
+                    _listLength = 9;
+                  }
+                  return ListWheelScrollView(
+                    itemExtent: 52,
+                    diameterRatio: 1.2,
+                    useMagnifier: true,
+                    magnification: 1.6,
+                    physics: const FixedExtentScrollPhysics(),
+                    controller:
+                        FixedExtentScrollController(initialItem: _baseIndex),
+                    onSelectedItemChanged: (index) {
+                      _baseIndex = index;
+                    },
+                    children: List.generate(_listLength, (index) {
+                      return Text(
+                        widget.type == DialogType.level
+                            ? (index + 1).toString()
+                            : (index).toString(),
+                        style: const TextStyle(
+                          fontSize: 38.0,
+                        ),
+                      );
+                    }, growable: false),
                   );
-                }, growable: false),
+                },
               ),
             ),
             TextButton(

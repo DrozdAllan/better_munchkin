@@ -81,13 +81,13 @@ class _PlayerCardState extends State<PlayerCard> {
                       diameterRatio: 1.2,
                       physics: const FixedExtentScrollPhysics(),
                       controller: FixedExtentScrollController(
-                          initialItem: widget.player.bonus - 1),
+                          initialItem: widget.player.bonus),
                       onSelectedItemChanged: (index) {
                         context
                             .read<PlayerCubit>()
                             .setBonus(widget.player.name, index);
                       },
-                      children: List.generate(30, (index) {
+                      children: List.generate(40, (index) {
                         return Text(
                           index.toString(),
                         );

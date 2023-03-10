@@ -25,11 +25,12 @@ class CustomIcons {
   static const _kFontFam = 'CustomIcons';
   static const String? _kFontPkg = null;
 
-  static const IconData circleOfCircles = IconData(0xe965, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData bladeBite = IconData(0xe930, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData boneBite = IconData(0xe938, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData corkedTube = IconData(0xe973, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData crossedAxes = IconData(0xe979, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData crossedBones = IconData(0xe97a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData gecko = IconData(0xe9de, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData doubled = IconData(0xe99f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData hornCall = IconData(0xea04, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData hospitalCross = IconData(0xea07, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData knightHelmet = IconData(0xea1a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -37,5 +38,4 @@ class CustomIcons {
   static const IconData monsterSkull = IconData(0xea43, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData skull = IconData(0xeaa1, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData targeted = IconData(0xeac5, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData wyvern = IconData(0xeaeb, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

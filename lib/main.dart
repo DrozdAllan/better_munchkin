@@ -1,3 +1,4 @@
+import 'package:better_munchkin/logic/cubit/is_grid_cubit.dart';
 import 'package:better_munchkin/style.dart';
 import 'package:better_munchkin/utils/commons.dart';
 import 'package:better_munchkin/views/home/home.dart';
@@ -13,6 +14,7 @@ Future<void> main() async {
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(
     MultiBlocProvider(providers: [
+      BlocProvider(create: (context) => IsGridCubit()),
       BlocProvider(create: (context) => IsEpicCubit()),
       BlocProvider(create: (context) => PlayerCubit()),
       BlocProvider(create: (context) => BattleCubit()),

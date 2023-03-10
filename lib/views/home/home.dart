@@ -1,9 +1,10 @@
 import 'package:better_munchkin/logic/cubit/is_epic_cubit.dart';
+import 'package:better_munchkin/logic/cubit/is_grid_cubit.dart';
 import 'package:better_munchkin/utils/custom_dialog.dart';
 import 'package:better_munchkin/views/battle/battle.dart';
+import 'package:better_munchkin/views/home/player_grid.dart';
 import 'package:better_munchkin/views/home/player_list.dart';
 import 'package:better_munchkin/utils/commons.dart';
-import 'package:better_munchkin/views/strategic/strategic.dart';
 import 'add_player_dialog.dart';
 
 class Home extends StatelessWidget {
@@ -18,8 +19,11 @@ class Home extends StatelessWidget {
           builder: (context, state) {
             return IconButton(
               icon: state
-                  ? const Icon(CustomIcons.wyvern)
-                  : const Icon(CustomIcons.gecko),
+                  ? const Icon(
+                      CustomIcons.bladeBite,
+                      size: 28.0,
+                    )
+                  : const Icon(CustomIcons.boneBite),
               onPressed: () {
                 ScaffoldMessenger.of(context).clearSnackBars();
                 context.read<IsEpicCubit>().swap();
@@ -36,13 +40,16 @@ class Home extends StatelessWidget {
           },
         ),
         actions: [
-          IconButton(
-            icon: const Icon(CustomIcons.circleOfCircles),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const Strategic(),
-                ),
+          BlocBuilder<IsGridCubit, bool>(
+            builder: (context, state) {
+              return IconButton(
+                icon: state
+                    // TODO: add little animation when tap
+                    ? const Icon(CustomIcons.doubled)
+                    : const Icon(CustomIcons.doubled),
+                onPressed: () {
+                  context.read<IsGridCubit>().swap();
+                },
               );
             },
           ),
@@ -69,7 +76,15 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
-      body: const PlayerList(),
+      body: BlocBuilder<IsGridCubit, bool>(
+        builder: (context, state) {
+          if (state == true) {
+            return const PlayerGrid();
+          } else {
+            return const PlayerList();
+          }
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         mini: true,
         elevation: 0.0,
