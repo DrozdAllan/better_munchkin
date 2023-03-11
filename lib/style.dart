@@ -16,8 +16,10 @@ ThemeData myLightTheme = ThemeData(
   dialogTheme: const DialogTheme(surfaceTintColor: _primaryLightColor),
   chipTheme: const ChipThemeData(backgroundColor: _primaryColor),
   iconButtonTheme: const IconButtonThemeData(
-      style: ButtonStyle(
-          foregroundColor: MaterialStatePropertyAll(_primaryDarkColor))),
+    style: ButtonStyle(
+      foregroundColor: MaterialStatePropertyAll(_primaryDarkColor),
+    ),
+  ),
   appBarTheme: const AppBarTheme(
     centerTitle: true,
     titleTextStyle:

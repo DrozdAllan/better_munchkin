@@ -17,36 +17,39 @@ class Home extends StatelessWidget {
         title: const Text('Better Munchkin'),
         leading: BlocBuilder<IsEpicCubit, bool>(
           builder: (context, state) {
-            return IconButton(
-              icon: state
-                  ? const Icon(
-                      CustomIcons.bladeBite,
-                      size: 28.0,
-                    )
-                  : const Icon(CustomIcons.boneBite),
-              onPressed: () {
-                ScaffoldMessenger.of(context).clearSnackBars();
-                context.read<IsEpicCubit>().swap();
-                String mode = state
-                    ? 'normal : maximum level is 10'
-                    : 'epic : maximum level is 20';
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Gamemode set to $mode'),
-                  ),
-                );
-              },
-            );
+            return Padding(
+			  padding: const EdgeInsets.all(7.0),
+			  child: IconButton(
+				iconSize: state ? 28.0 : 24.0,
+				icon: state
+					? const Icon(
+						CustomIcons.bladeBite,
+					  )
+					: const Icon(CustomIcons.boneBite),
+				onPressed: () {
+				  ScaffoldMessenger.of(context).clearSnackBars();
+				  context.read<IsEpicCubit>().swap();
+				  String mode = state
+					  ? 'normal : maximum level is 10'
+					  : 'epic : maximum level is 20';
+				  ScaffoldMessenger.of(context).showSnackBar(
+					SnackBar(
+					  content: Text('Gamemode set to $mode'),
+					),
+				  );
+				},
+			  ),
+			);
           },
         ),
         actions: [
           BlocBuilder<IsGridCubit, bool>(
             builder: (context, state) {
               return IconButton(
-                icon: state
-                    // TODO: add little animation when tap
-                    ? const Icon(CustomIcons.doubled)
-                    : const Icon(CustomIcons.doubled),
+                icon: AnimatedRotation(
+                    duration: const Duration(milliseconds: 600),
+                    turns: state ? 0 : 1,
+                    child: const Icon(CustomIcons.doubled)),
                 onPressed: () {
                   context.read<IsGridCubit>().swap();
                 },
