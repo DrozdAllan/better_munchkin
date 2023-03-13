@@ -16,11 +16,11 @@ class PlayerChip extends StatelessWidget {
           showDialog(
             context: context,
             builder: (context) =>
-                StatDialog(type: DialogType.battlePower, player: player),
+                StatDialog(type: DialogType.battleStrength, player: player),
           );
         },
         child: Chip(
-          label: Text('${player.name} (${player.power.toString()})'),
+          label: Text('${player.name} (${player.strength.toString()})'),
           backgroundColor: Color(player.colorId),
           deleteIcon: const Icon(CustomIcons.crossedBones, size: 16.0),
           onDeleted: () {

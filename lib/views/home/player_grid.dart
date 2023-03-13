@@ -73,7 +73,7 @@ class PlayerGrid extends StatelessWidget {
                               CustomIcons.targeted,
                             ),
                             Text(
-                              player.power.toString(),
+                              player.strength.toString(),
                             ),
                           ],
                         ),

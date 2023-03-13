@@ -15,7 +15,7 @@ class PlayerCubit extends Cubit<List<Player>> {
     emit([
       for (final player in state)
         if (player.name == playerName)
-          player.copyWith(level: level, power: (level + player.bonus))
+          player.copyWith(level: level, strength: (level + player.bonus))
         else
           player
     ]);
@@ -25,7 +25,7 @@ class PlayerCubit extends Cubit<List<Player>> {
     emit([
       for (final player in state)
         if (player.name == playerName)
-          player.copyWith(bonus: bonus, power: (bonus + player.level))
+          player.copyWith(bonus: bonus, strength: (bonus + player.level))
         else
           player
     ]);

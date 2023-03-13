@@ -57,19 +57,20 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
               key: _formFieldKey,
               textAlign: TextAlign.start,
               controller: _name,
-              decoration: const InputDecoration(
-                  label: Center(child: Text('Name')),
-                  border: OutlineInputBorder()),
+              decoration: InputDecoration(
+                  label:
+                      Center(child: Text(AppLocalizations.of(context)!.name)),
+                  border: const OutlineInputBorder()),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter a name';
+                  return AppLocalizations.of(context)!.nameRule1;
                 }
                 if (value.length > 15) {
-                  return '15 caracters maximum';
+                  return AppLocalizations.of(context)!.nameRule2;
                 }
                 for (Player player in context.read<PlayerCubit>().state) {
                   if (player.name == value.toTitleCase()) {
-                    return 'Name already taken';
+                    return AppLocalizations.of(context)!.nameRule3;
                   }
                 }
                 return null;
@@ -94,7 +95,7 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
                               colorId: color.value,
                               level: 1,
                               bonus: 0,
-                              power: 1));
+                              strength: 1));
                           Navigator.pop(context);
                         }
                       },

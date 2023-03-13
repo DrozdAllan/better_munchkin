@@ -15,8 +15,8 @@ class CustomDialog extends StatelessWidget {
       contentPadding: const EdgeInsets.only(top: 12.0),
       title: Text(
         dialogType
-            ? 'Select the player to battle'
-            : 'Select the player to remove',
+            ? AppLocalizations.of(context)!.battleDialog
+            : AppLocalizations.of(context)!.removeDialog,
         textAlign: TextAlign.center,
       ),
       children: [

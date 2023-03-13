@@ -14,32 +14,33 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Better Munchkin'),
+        title: const Text('Munchkin Helper'),
         leading: BlocBuilder<IsEpicCubit, bool>(
           builder: (context, state) {
             return Padding(
-			  padding: const EdgeInsets.all(7.0),
-			  child: IconButton(
-				iconSize: state ? 28.0 : 24.0,
-				icon: state
-					? const Icon(
-						CustomIcons.bladeBite,
-					  )
-					: const Icon(CustomIcons.boneBite),
-				onPressed: () {
-				  ScaffoldMessenger.of(context).clearSnackBars();
-				  context.read<IsEpicCubit>().swap();
-				  String mode = state
-					  ? 'normal : maximum level is 10'
-					  : 'epic : maximum level is 20';
-				  ScaffoldMessenger.of(context).showSnackBar(
-					SnackBar(
-					  content: Text('Gamemode set to $mode'),
-					),
-				  );
-				},
-			  ),
-			);
+              padding: const EdgeInsets.all(7.0),
+              child: IconButton(
+                iconSize: state ? 28.0 : 24.0,
+                icon: state
+                    ? const Icon(
+                        CustomIcons.bladeBite,
+                      )
+                    : const Icon(CustomIcons.boneBite),
+                onPressed: () {
+                  ScaffoldMessenger.of(context).clearSnackBars();
+                  context.read<IsEpicCubit>().swap();
+                  String mode = state
+                      ? AppLocalizations.of(context)!.normal
+                      : AppLocalizations.of(context)!.epic;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                          "${AppLocalizations.of(context)!.gamemode} $mode"),
+                    ),
+                  );
+                },
+              ),
+            );
           },
         ),
         actions: [
@@ -67,14 +68,14 @@ class Home extends StatelessWidget {
                 context: context,
                 builder: (context) => const AddPlayerDialog(),
               ),
-              child: const Text('Add Player'),
+              child: Text(AppLocalizations.of(context)!.addPlayer),
             ),
             TextButton(
               onPressed: () => showDialog(
                 context: context,
                 builder: (context) => const CustomDialog(dialogType: false),
               ),
-              child: const Text('Remove Player'),
+              child: Text(AppLocalizations.of(context)!.removePlayer),
             ),
           ],
         ),

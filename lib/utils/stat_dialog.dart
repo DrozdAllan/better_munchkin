@@ -4,7 +4,7 @@ import 'package:better_munchkin/logic/cubit/is_epic_cubit.dart';
 import 'package:better_munchkin/logic/cubit/player_cubit.dart';
 import 'package:better_munchkin/utils/commons.dart';
 
-enum DialogType { monster, level, bonus, battlePower }
+enum DialogType { monster, level, bonus, battleStrength }
 
 class StatDialog extends StatefulWidget {
   final DialogType type;
@@ -24,22 +24,21 @@ class _StatDialogState extends State<StatDialog> {
   late Function _buttonFunction;
 
   @override
-  void initState() {
-    super.initState();
-
+  Widget build(BuildContext context) {
     switch (widget.type) {
       case DialogType.monster:
-        _baseIndex = 0;
+        _baseIndex = 1;
         _listLength = 30;
-        _dialogTitle = "Monster's Power";
-        _buttonTitle = "Add Monster";
+        _dialogTitle = AppLocalizations.of(context)!.monsterDialog;
+        _buttonTitle = AppLocalizations.of(context)!.addMonster;
         _buttonFunction =
-            () => context.read<BattleCubit>().addMonster(_baseIndex + 1);
+            () => context.read<BattleCubit>().addMonster(_baseIndex);
         break;
       case DialogType.level:
         _baseIndex = widget.player!.level;
-        _dialogTitle = "${widget.player!.name}'s Level";
-        _buttonTitle = "Modify Level";
+        _dialogTitle = AppLocalizations.of(context)!
+            .playerLevelDialog(widget.player!.name);
+        _buttonTitle = AppLocalizations.of(context)!.modifLevel;
         _buttonFunction = () => context
             .read<PlayerCubit>()
             .setLevel(widget.player!.name, _baseIndex + 1);
@@ -47,26 +46,27 @@ class _StatDialogState extends State<StatDialog> {
       case DialogType.bonus:
         _baseIndex = widget.player!.bonus;
         _listLength = 40;
-        _dialogTitle = "${widget.player!.name}'s Bonus";
-        _buttonTitle = "Modify Bonus";
+        _dialogTitle = AppLocalizations.of(context)!
+            .playerBonusDialog(widget.player!.name);
+        _buttonTitle = AppLocalizations.of(context)!.modifBonus;
         _buttonFunction = () => context
             .read<PlayerCubit>()
             .setBonus(widget.player!.name, _baseIndex);
         break;
-      case DialogType.battlePower:
-        _baseIndex = widget.player!.power;
+      case DialogType.battleStrength:
+        _baseIndex = widget.player!.strength;
         _listLength = 40;
-        _dialogTitle = "${widget.player!.name}'s Power";
-        _buttonTitle = "Modify Power";
+        _dialogTitle = AppLocalizations.of(context)!
+            .playerStrengthDialog(widget.player!.name);
+        _buttonTitle = AppLocalizations.of(context)!.modifStrength;
         _buttonFunction = () => context
             .read<BattleCubit>()
             .modifyPlayer(widget.player!.name, _baseIndex + 1);
+
+			// TODO: add case.DialogType.monsterStrength to add to monster chip
         break;
     }
-  }
 
-  @override
-  Widget build(BuildContext context) {
     return SimpleDialog(
       title: Text(
         _dialogTitle,

@@ -56,7 +56,7 @@ class Battle extends StatelessWidget {
                   state.monsterList.length,
                   (index) => MonsterChip(
                       index: index,
-                      power: state.monsterList.elementAt(index).power),
+                      strength: state.monsterList.elementAt(index).strength),
                 );
                 chipsList.add(
                   IconButton(
@@ -81,16 +81,22 @@ class Battle extends StatelessWidget {
             if (state.isWinner == true) {
               return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text('PLAYERS WIN '),
-                    Icon(CustomIcons.hornCall),
+                  children: [
+                    state.playerList.length == 1
+                        ? Text(AppLocalizations.of(context)!
+                            .winSolo(state.playerList.first.name))
+                        : Text(AppLocalizations.of(context)!.winMultiple),
+                    const Icon(CustomIcons.hornCall),
                   ]);
             } else if (state.isWinner == false) {
               return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text('PLAYERS LOOSE '),
-                    Icon(CustomIcons.skull)
+                  children: [
+                    state.playerList.length == 1
+                        ? Text(AppLocalizations.of(context)!
+                            .loseSolo(state.playerList.first.name))
+                        : Text(AppLocalizations.of(context)!.loseMultiple),
+                    const Icon(CustomIcons.skull)
                   ]);
             } else {
               // height with fixed height to avoid the alignment of the column making widgets move

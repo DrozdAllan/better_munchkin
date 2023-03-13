@@ -107,7 +107,7 @@ class _PlayerCardState extends State<PlayerCard> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        widget.player.power.toString(),
+                        widget.player.strength.toString(),
                       ),
                     ),
                   ),

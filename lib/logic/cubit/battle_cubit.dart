@@ -38,11 +38,11 @@ class BattleCubit extends Cubit<BattleSet> {
     }
   }
 
-  void modifyPlayer(String playerName, int playerPower) {
+  void modifyPlayer(String playerName, int playerStrength) {
     final newPlayerList = [
       for (final oldPlayer in state.playerList)
         if (oldPlayer.name == playerName)
-          oldPlayer.copyWith(power: playerPower)
+          oldPlayer.copyWith(strength: playerStrength)
         else
           oldPlayer,
     ];
@@ -57,9 +57,9 @@ class BattleCubit extends Cubit<BattleSet> {
     calculateScore();
   }
 
-  void addMonster(int monsterPower) {
+  void addMonster(int monsterStrength) {
     final newMonsterList = state.monsterList.toList();
-    newMonsterList.add(Monster(power: monsterPower));
+    newMonsterList.add(Monster(strength: monsterStrength));
     emit(state.copyWith(monsterList: newMonsterList));
     calculateScore();
   }
@@ -72,15 +72,15 @@ class BattleCubit extends Cubit<BattleSet> {
   }
 
   void calculateScore() {
-    final playersPower = state.playerList
-        .fold(0, (previousValue, element) => previousValue + element.power);
+    final playersStrength = state.playerList
+        .fold(0, (previousValue, element) => previousValue + element.strength);
 
-    final monstersPower = state.monsterList
-        .fold(0, (previousValue, element) => previousValue + element.power);
+    final monstersStrength = state.monsterList
+        .fold(0, (previousValue, element) => previousValue + element.strength);
 
-    if (playersPower == 0 || monstersPower == 0) {
+    if (playersStrength == 0 || monstersStrength == 0) {
       emit(state.copyWith(isWinner: null));
-    } else if (playersPower > monstersPower) {
+    } else if (playersStrength > monstersStrength) {
       emit(state.copyWith(isWinner: true));
     } else {
       emit(state.copyWith(isWinner: false));

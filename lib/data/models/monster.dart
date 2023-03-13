@@ -2,17 +2,17 @@ import 'package:better_munchkin/utils/commons.dart';
 
 @immutable
 class Monster {
-  final int power;
+  final int strength;
 
   const Monster({
-    required this.power,
+    required this.strength,
   });
 
   Monster copyWith({
-    int? power,
+    int? strength,
   }) {
     return Monster(
-      power: power ?? this.power,
+      strength: strength ?? this.strength,
     );
   }
 }
